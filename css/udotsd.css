@@ -29,6 +29,15 @@ h6 {
   color: #343a40;
 }
 
+.masthead {
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('../img/roadwork.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 h1 {
   font-size: 6rem;
   line-height: 5.5rem;
