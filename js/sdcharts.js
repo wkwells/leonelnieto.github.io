@@ -8,59 +8,71 @@ var dataPack2 = [1000, 1200, 1300, 1400, 1060, 2030, 2070, 4000, 4100, 4020, 403
 var dates = ["Mon, May 1", "Tue, May 2", "Wed, May 3", "Thu, May 4", "Fri, May 5", "Sat, May 6",
   "Sun, May 7", "Mon, May 8", "Tue, May 9", "Wed, May 10", "Thu, May 11", "Fri, May 12"
 ];
-var data = [{
-            data:[5,12,83],
-
-            backgroundColor:["#6d3610","#ee7623","#f5b487"],
-            borderColor: "#fff",
-            borderWidth:[3,3,3]
-        }];
+var data = {
+            labels: ["Motor Fuel / Special Fuel", "Motor Vehicle Registration","Sales Tax"],
+            datesets:[{
+              fill: true,
+              backgroundColor:["#6d3610","#ee7623","#f5b487"],
+              data:[5,12,83],
+              borderColor: "#fff",
+              borderWidth:[3,3,3]
+            }],
+        };
 
 var options = {
 	responsive: true,
   title: {
         display: true,
         position: "top",
-        text: "Doughnut Chart",
+        text: "Revenue",
         fontSize: 18,
         fontColor: "#111"
     },
+    rotation: -0.7 * Math.PI,
     legend: {
         display: true,
         position: "bottom",
         labels: {
-            fontColor: "#333",
-            fontSize: 16
-        }
+          fontColor: "#333",
+          fontSize: 16,
+          generateLabels: function(chart){
+            var data = chart.data;
+            if(data.labels.length && data.datasets.length){
+              return data.labels.map(function(label,i){
+                var meta = chart.getDatasetMeta(0);
+                var ds = data.datasets[0];
+                var arc = meta.data[i];
+                var custom = arc && arc.custom || {};
+                var valueAtIndexOrDefault = helpers.valueAtIndexOrDefault;
+                var arcOpts = chart.options.elements.arc;
+                var fill = custom.backgroundColor ? custom.backgroundColor : valueAtIndexOrDefault(ds.backgroundColor,i,arcOpts.backgroundColor);
+                var stroke = custom.borderColor ? custom.borderColor : valueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
+                var bw = custom.borderWidth ? custom.borderWidth : valueAtIndexOrDefault(ds.borderWidth,i, arcOpts.borderWidth);
+                return {
+                  text:label,
+                  fillStyle: fill,
+                  strokeStyle: stroke,
+                  lineWidth: bw,
+                  hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
+                  index: i
+                };
+              });
+            }
+            return [];
+          }
+        },
     },
-  plugins: {
-    datalabels: {
-      formatter: (value, ctx) => {
-        let sum = 0;
-        let dataArr = ctx.chart.data.datasets[0].data;
-        dataArr.map(data => {
-          sum += data;
-        });
-        let percentage = (value*100 / sum).toFixed(2)+"%";
-        return percentage;
-      },
-      color: '#fff',
-    }
-  }
 };
 
 
 var ctx = document.getElementById("pie-chart").getContext('2d');
 var myChart = new Chart(ctx, {
         type: 'doughnut',
-        data: {
-            datasets: data,
-            labels: ["Motor Fuel / Special Fuel", "Motor Vehicle Registration","Sales Tax"]
-        },
-              options: options
+        data: data,
+        options: options
     });
 
-        
+
 
 var bar_ctx_2 = document.getElementById('bar-chart-2');
 var bar_ctx_3 = document.getElementById('bar-chart-3');

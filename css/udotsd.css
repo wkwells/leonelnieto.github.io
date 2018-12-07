@@ -249,3 +249,21 @@ a:hover, a:focus, a:active {
   transform: translate(-50%, -50%);
   white-space: nowrap;
 }
+.no-border {
+  border: none;
+}
+.vh-90 {
+  height: 90vh;
+}
+.vh-80 {
+  height: 80vh;
+}
+.vh-50 {
+  height: 50vh;
+}
+.vh-70 {
+  height: 70vh;
+}
+.h-90 {
+  height: 90%;
+}
