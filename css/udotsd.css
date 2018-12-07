@@ -191,12 +191,55 @@ section.udotsd-section .udotsd-item .udotsd-date {
   }
 }
 
+#ul-tabs ul li a {
+  color: #fff
+}
+#ul-tabs ul li a:hover {
+  color: black;
+}
+
 .bg-primary {
   background-color: #5588cc !important;
 }
 
+.udot-bg-1 {
+  background-color: #515051 !important;
+}
+
+.udot-bg-2 {
+  background-color: #ececec !important;
+}
+
+.udot-bg-3 {
+  background-color: #5a87c5 !important;
+}
+.udot-bg-4 {
+  background-color: #474747 !important;
+}
+
+.udot-bg-blue {
+  background-color: #5a87c5 !important;
+}
+.udot-bg-gray {
+  background-color: #F3F2F3 !important;
+}
 .text-primary {
   color: #5588cc !important;
+}
+.text-udotblue {
+  color: #5a87c5 !important;
+}
+.orange-list {
+  list-style: none;
+}
+
+.orange-list li::before {
+  content: "\2022";
+  color: #d58e61;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
 
 a {
@@ -216,6 +259,10 @@ a:hover, a:focus, a:active {
   display: block;
   margin: 0 auto;
   height: 16vh;
+  color: #fff;
+}
+.active div span .icon {
+  color: #5a87c5 !important;
 }
 .iconspan{
   font-size: 14vh;
@@ -226,7 +273,7 @@ a:hover, a:focus, a:active {
   bottom: 0;
   left: 100%;
   right: 0;
-  background-color: #008CBA;
+  background-color: #5a87c5;
   overflow: hidden;
   width: 0;
   height: 100%;
@@ -250,7 +297,7 @@ a:hover, a:focus, a:active {
   white-space: nowrap;
 }
 .no-border {
-  border: none;
+  border: none !important;
 }
 .vh-90 {
   height: 90vh;
