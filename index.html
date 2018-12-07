@@ -25,7 +25,7 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#page-top">
               <div class="overlay-container">
-                <span class="iconspan"><i class="fas fa-home icon"></i></span>
+                <span class="iconspan"><img src="img/icons/home.png" class="icon"></span>
                 <div class="overlay">
                   <div class="overlay-text">Home</div>
                 </div>
@@ -35,7 +35,7 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#aboutUDOT">
               <div class="overlay-container">
-                <span class="iconspan"><i class="fas fa-info-circle icon"></i></span>
+                <span class="iconspan"><img src="img/icons/UDOT Icon-01.png" class="icon"></i></span>
                 <div class="overlay">
                   <div class="overlay-text">About UDOT</div>
                 </div>
@@ -45,7 +45,7 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#strategicGoals">
               <div class="overlay-container">
-                <span class="iconspan"><i class="fas fa-compass icon"></i></span>
+                <span class="iconspan"><img src="img/icons/Goal.png" class="icon"></i></span>
                 <div class="overlay">
                   <div class="overlay-text">Strategic Goals</div>
                 </div>
@@ -55,7 +55,7 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#funding">
               <div class="overlay-container">
-                <span class="iconspan"><i class="fas fa-funnel-dollar icon"></i></span>
+                <span class="iconspan"><img src="img/icons/Funding.png" class="icon"></span>
                 <div class="overlay">
                   <div class="overlay-text">Funding</div>
                 </div>
@@ -65,7 +65,7 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#programBriefing">
               <div class="overlay-container">
-                <span class="iconspan"><i class="fas fa-chalkboard-teacher icon"></i></span>
+                <span class="iconspan"><img src="img/icons/Program briefing.png" class="icon"></span>
                 <div class="overlay">
                   <div class="overlay-text">Program Briefing</div>
                 </div>
@@ -75,7 +75,7 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#tactialMeasures">
               <div class="overlay-container">
-                <span class="iconspan"><i class="fas fa-tachometer-alt icon"></i></span>
+                <span class="iconspan"><img src="img/icons/Tactic icon.png" class="icon"></span>
                 <div class="overlay">
                   <div class="overlay-text">Tactial Measures</div>
                 </div>
@@ -282,9 +282,9 @@
         <!--Section Wrapper -->
         <div class="my-auto w-100">
           <!--Row Containing tabs for funding -->
-          <div class="row vh-70">
+          <div class="row">
             <div class="col-md-12">
-              <div class="card h-100">
+              <div class="card">
                 <div class="card-body">
                   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item">
@@ -306,9 +306,10 @@
                       <a class="nav-link" id="pills-aero-tab" data-toggle="pill" href="#pills-aero" role="tab" aria-controls="pills-aero" aria-selected="false">Aeronatics</a>
                     </li>
                   </ul>
-                  <div class="tab-content h-90" id="pills-tabContent">
+                  <div class="tab-content" id="pills-tabContent">
+                    <!-- Tab One with Funding Percentages -->
                     <div class="tab-pane fade show active h-100" id="pills-funding" role="tabpanel" aria-labelledby="pills-funding-tab">
-                      <div class="row text-center h-100">
+                      <div class="row text-center">
                         <div class="col-md">
                           <div class="card h-100 no-border">
                             <div class="card-body">
@@ -318,7 +319,7 @@
                           </div>
                         </div>
                         <div class="col-md">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
                               <h4 class="card-title h-25">Transportation Fund</h4>
                               <h1 class="fundingPercent  mt-5 mb-5">80%</h1>
@@ -326,7 +327,7 @@
                           </div>
                         </div>
                         <div class="col-md">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
                               <h4 class="card-title h-25">Rural Transit</h4>
                               <h1 class="fundingPercent  mt-5 mb-5">80%</h1>
@@ -334,7 +335,7 @@
                           </div>
                         </div>
                         <div class="col-md">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
                               <h4 class="card-title h-25">Aeronatics</h4>
                               <h1 class="fundingPercent  mt-5 mb-5">80%</h1>
@@ -342,7 +343,7 @@
                           </div>
                         </div>
                         <div class="col-md">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
                               <h4 class="card-title h-25">Transportation Investment Fund</h4>
                               <h1 class="fundingPercent  mt-5 mb-5">80%</h1>
@@ -351,35 +352,135 @@
                         </div>
                       </div>
                     </div>
+                    <!-- ./Tab One with Funding Percentages -->
+                    <!-- Tab Two with TIF Data -->
                     <div class="tab-pane fade" id="pills-tif" role="tabpanel" aria-labelledby="pills-tif-tab">
                       <div class="row">
+                        <div class="col-12">
+                          <div class="card no-border text-center">
+                            <h5 class="card-title">Revenue</h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
                         <div class="col-md-6">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
-                              <canvas id="pie-chart"></canvas>
+                              <canvas id="TIFRevenuePieChart"></canvas>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-6">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
-                              <canvas id="bar-chart-2"></canvas>
+                                <table class="table-sm table-hover finance">
+                                <tr>
+                                  <td>Sales Tax 8.3%</td>
+                                  <td>$ 218,640,552</td>
+                                </tr>
+                                <tr>
+                                  <td>Sales Tax - 30% Growth</td>
+                                  <td>229,177,447</td>
+                                </tr>
+                                <tr>
+                                  <td>Sales Tax - 3.68%</td>
+                                  <td>96,939,426</td>
+                                </tr>
+                                <tr>
+                                  <td>Sales Tax - 1/16%</td>
+                                  <td>23,002,668</td>
+                                </tr>
+                                <tr>
+                                  <td>Sales Tax .05%</td>
+                                  <td>18,136,307</td>
+                                </tr>
+                                <tr>
+                                  <td>1997 Registration Increase</td>
+                                  <td>29,085,948</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" style="font-size: 4px;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2">Transfered from TF</td>
+                                </tr>
+                                <tr class="table-success">
+                                  <td>1.8 Cents Per Gallon of Motor Fuel</td>
+                                  <td>31,097,500</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" style="font-size: 4px;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td>Total TIF Revenue</td>
+                                  <td>$ 702,308,700</td>
+                                </tr>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="card no-border text-center">
+                            <h5 class="card-title">Expenditures</h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="card no-border">
+                            <div class="card-body">
+                              <canvas id="TIFExpendituresPieChart"></canvas>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card no-border">
+                            <div class="card-body">
+                                <table class="table-sm table-hover finance">
+                                  <thead>
+                                    <tr><td>Project Description</td><td>Project Value (Nearest $ Million)</td></tr>
+                                  </thead>
+                                <tr><td>West Davis Highway</td><td>609,500</td></tr>
+                                <tr><td>Mountain View Corridor</td><td>552,000</td></tr>
+                                <tr><td>I-15 Lehi Main to SR-92, Technology Corridor</td><td>450,000</td></tr>
+                                <tr><td>US-89; Farmington to I-84</td><td>273,000</td></tr>
+                                <tr><td>4 Interchanges on Bangerter Highway</td><td>200,293</td></tr>
+                                <tr><td>I-15 SB; 12300 South to SR-201</td><td>169,200</td></tr>
+                                <tr><td>I-15; SR-232 to I-84</td><td>158,000</td></tr>
+                                <tr><td>I-15 NB; 9000 South to I-215</td><td>150,000</td></tr>
+                                <tr><td>Mega Project(SB277 $100M Recreation &amp; Tourism)</td><td>97,300</td></tr>
+                                <tr><td>I-15 24th Street Interchange</td><td>96,000</td></tr>
+                                <tr><td>I-15 1800 North Interchange</td><td>90,000</td></tr>
+                                <tr><td>SR-7 (Southtern Parkway) Sand Hollow to SR-9</td><td>74,740</td></tr>
+                                <tr><td>Midway Highway</td><td>74,400</td></tr>
+                                <tr><td>Bangerter Highway at 6200 South</td><td>64,000</td></tr>
+                                <tr><td>SR-108; 300 Norht to 1800 North</td><td>60,000</td></tr>
+                                <tr><td>US-189; Wallsburg to Charleston</td><td>53,000</td></tr>
+                                <tr><td>SR-108: SR-127 to SR-107</td><td>50,000</td></tr>
+                                <tr><td>Porter Rockwell (Bridge)</td><td>50,000</td></tr>
+                                <tr><td>Bangerter Highway at 126000 South</td><td>49,000</td></tr>
+                                <tr><td>I-15; Shepard Lane Interchange</td><td>47,000</td></tr>
+                              </table>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <!-- ./Tab Two with TIF Data -->
+                    <!-- Tab Two with TF Data -->
                     <div class="tab-pane fade" id="pills-tf" role="tabpanel" aria-labelledby="pills-tf-tab">
                       <div class="row">
                         <div class="col-md-6">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
                               <canvas id="bar-chart-3"></canvas>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-6">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
                               <canvas id="bar-chart-2"></canvas>
                             </div>
@@ -387,17 +488,19 @@
                         </div>
                       </div>
                     </div>
+                    <!-- ./Tab Two with TF Data -->
+                    <!-- Tab Two with hff Data -->
                     <div class="tab-pane fade" id="pills-hff" role="tabpanel" aria-labelledby="pills-hff-tab">
                       <div class="row">
                         <div class="col-md-6">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
 
                             </div>
                           </div>
                         </div>
                         <div class="col-md-6">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
 
                             </div>
@@ -405,17 +508,19 @@
                         </div>
                       </div>
                     </div>
+                    <!-- ./Tab Two with hff Data -->
+                    <!-- Tab Two with rural Data -->
                     <div class="tab-pane fade" id="pills-rural" role="tabpanel" aria-labelledby="pills-rural-tab">
                       <div class="row">
                         <div class="col-md-6">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
 
                             </div>
                           </div>
                         </div>
                         <div class="col-md-6">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
 
                             </div>
@@ -423,17 +528,19 @@
                         </div>
                       </div>
                     </div>
+                    <!--./ Tab Two with rural Data -->
+                    <!-- Tab Two with aero Data -->
                     <div class="tab-pane fade" id="pills-aero" role="tabpanel" aria-labelledby="pills-aero-tab">
                       <div class="row">
                         <div class="col-md-6">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
 
                             </div>
                           </div>
                         </div>
                         <div class="col-md-6">
-                          <div class="card h-100 no-border">
+                          <div class="card no-border">
                             <div class="card-body">
 
                             </div>
@@ -441,24 +548,56 @@
                         </div>
                       </div>
                     </div>
+                    <!-- ./Tab Two with aero Data -->
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!--./Row Containign tabs for funding end -->
+          <!--./Row Containing tabs for funding end -->
         </div>
         <!--./Section Wrapper -->
       </section>
       <!--./Section on Funding ends -->
       <hr class="m-0">
-      <section class="udotsd-section p-3 p-lg-5 d-flex flex-column" id="interests">
-        <div class="my-auto">
-
+      <!--Section on Program Briefing -->
+      <section class="udotsd-section p-3 p-lg-5 d-flex flex-column bg-dark" id="programBriefing">
+        <!--Wrapper Div for Program Breifing -->
+        <div class="my-auto w-100">
+          <!--Row in Program Briefing -->
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body">
+                  <img class="card-img-top" src="img/TIF & Planning.png" alt="TIF and Planning Logo">
+                  <h3 class="card-title text-center">TIF and Planning</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body">
+                  <img class="card-img-top" src="img/Program and Process.png" alt="Program and Process">
+                  <h3 class="card-title text-center">Program and Process</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body">
+                  <img class="card-img-top" src="img/Projects.png" alt="Projects">
+                  <h3 class="card-title text-center">Projects</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--./Row in Program Briefing -->
         </div>
+        <!--./Wrapper Div for Program Breifing -->
       </section>
+      <!--./Section on Program Briefing -->
       <hr class="m-0">
-      <section class="udotsd-section p-3 p-lg-5 d-flex flex-column" id="awards">
+      <section class="udotsd-section p-3 p-lg-5 d-flex flex-column" id="tactialMeasures">
         <div class="my-auto">
 
         </div>

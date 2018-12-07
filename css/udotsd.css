@@ -214,7 +214,7 @@ a:hover, a:focus, a:active {
 
 .icon {
   display: block;
-  width: 100%;
+  margin: 0 auto;
   height: 16vh;
 }
 .iconspan{
@@ -266,4 +266,27 @@ a:hover, a:focus, a:active {
 }
 .h-90 {
   height: 90%;
+}
+/*financial tables*/
+.finance table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.finance td {
+  text-align: left;
+  padding: 0px;
+  font-size: 0.8rem;
+}
+.finance td:nth-child(2){
+text-align: right;
+}
+.finance thead td {
+  font-weight: bold;
+}
+.tab-pane.active {
+  animation: slide-down 2s ease-out;
+}
+@keyframes slide-down {
+    0% { opacity: 0; transform: translateY(100%); }
+    100% { opacity: 1; transform: translateY(0); }
 }
