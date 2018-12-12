@@ -2,9 +2,14 @@
 */
 
 .indexMetric {
-  font-size: 400%;
+  font-size: 6em;
   color: #698fca;
   text-decoration: none;
+}
+@media (max-width: 992px) {
+  .indexMetric{
+    font-size: 4.5em;
+  }
 }
 
 .percent {
@@ -57,4 +62,28 @@ body {
 }
 .no-border{
     border: none;
+}
+.bg-image1{
+  background-image: url('../img/Bridge Demolition.jpg')
+}
+.pb-icon{
+  width: 30%;
+  margin: 100px 0px 0px 0px;
+}
+.bg-none {
+  background: none !important;
+}
+.alt-link {
+  cursor: pointer;
+}
+.spin {
+  animation: spin 3s linear infinite;
+  /*Set our animation play state to paused initially */
+  animation-play-state: paused;
+}
+.spin:hover{
+  animation-play-state: running;
+}
+@keyframes spin {
+  100% {transform: rotate(1turn); }
 }
