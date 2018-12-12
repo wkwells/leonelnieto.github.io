@@ -985,15 +985,20 @@ function incidentManagement() {
     .then(function(response){
         return response.json();
     }).then(function(j){
+      var total = 0;
+      for(var i=0; i<j.length; i++){
+        total += parseInt(j[i]["incidents"]);
+      }
         Morris.Donut({
             element: 'incidentManagement',
             data: [
-              {label: "Motor assists", value: parseInt(j[0]["incidents_percentage"])},
-              {label: "Crash assists", value: parseInt(j[1]["incidents_percentage"])},
-              {label: "Debris removal", value: parseInt(j[2]["incidents_percentage"])},
-              {label: "Abandoned vehicles", value: parseInt(j[3]["incidents_percentage"])},
-              {label: "Other assists", value: parseInt(j[4]["incidents_percentage"])}
-            ]
+              {label: "Motor assists", value: parseInt(j[0]["incidents"])},
+              {label: "Crash assists", value: parseInt(j[1]["incidents"])},
+              {label: "Debris removal", value: parseInt(j[2]["incidents"])},
+              {label: "Abandoned vehicles", value: parseInt(j[3]["incidents"])},
+              {label: "Other assists", value: parseInt(j[4]["incidents"])}
+            ],
+            formatter: function (y) { return y+" : "+Math.round((y/total)*100)+"%"}
         });
     });
 }
