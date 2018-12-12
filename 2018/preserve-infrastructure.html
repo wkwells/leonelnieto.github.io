@@ -176,9 +176,6 @@
                       </ul>
 
                   </div>
-                  <div class="card-footer px-0">
-                    <a href="https://udottraffic.utah.gov/" class="btn btn-primary">UDOT Traffic Website</a>
-                  </div>
                 </div>
             </div>
             <div class="col-md-4 my-4">
@@ -192,10 +189,6 @@
                             <li>State Owned Bridges: These bridges are owned by the state and include pedestrian and rail bridges</li>
                             <li>Locally Owned Bridges: All bridges not owned by state and the national system that carry traffic on public routes</li>
                       </ul>
-
-                  </div>
-                  <div class="card-footer px-0">
-                    <a href="https://blog.udot.utah.gov/2010/05/incident-management-teams-udots-angels-in-white-trucks-provide-assistance-to-stranded-motorists/" class="btn btn-primary">UDOT Incident Management</a>
                   </div>
                 </div>
             </div>
@@ -207,16 +200,13 @@
                       <p class="text-left">Maintaining and repairing our traffic signals and advanced traffic signal ensures consistent reliability and extends the life-cycle of these devices. This proactive approach includes determining the end-of-life for each device to determine when service will be needed to replace, upgrade, or decommissioned as well as detect the number in good working condition.</p>
                       <p class="text-left">UDOT is adopting a complete lifecycle approach to ATMS devices and traffic signal management to achieve system reliability. This proactive approach includes determining the end-of-life for each device to determine when service will be needed to replace, upgrade or decommissioned as well as the number in good working condition.</p>
                   </div>
-                  <div class="card-footer px-0">
-                    <a href="http://udottraffic.utah.gov/RoadWeatherForecast.aspx" class="btn btn-primary">Road Weather Information</a>
-                  </div>
                 </div>
             </div>
         </div>
     </div>
     </section>
     <!--Performance Measures -->
-    <div class="container-fluid bg-dark text-center p-4">
+    <div class="container-fluid bg-dark text-center py-4">
         <div class="content-section-heading">
             <h2 class="mb-1 text-white">Infrastructure Performance Measures</h2>
         </div>
@@ -241,7 +231,29 @@
                         <h4 class="card-title text-center">Bridge Condition</h4>
                         <p class="lead">Bridge inspection is occurring year-round resulting in a frequency of every structure every two years. In March of each year, the BHI score of each structure inspected in the previous 12 months is updated. In March of each year, each structure is inspected and scored out of 100 using the Bridge Health Index (BHI).</p>
                         <p class="lead">The Bridge Health Index of the National Highway System (NHS), State, and Local Governments and Municipalities is tracked.</p>
-                        <div id="bridgeConditionChart" style="height: 450px;"></div>
+                        <div class="row">
+                          <div class="col-lg-4 p-0 m-0">
+                            <div class="card">
+                              <div class="card-body p-0 m-0">
+                                <div id="nhsBridgeCondition" style="height: 350px;"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 p-0 m-0">
+                            <div class="card">
+                              <div class="card-body p-0 m-0">
+                                <div id="stateBridgeCondition" style="height: 350px;"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 p-0 m-0">
+                            <div class="card">
+                              <div class="card-body p-0 m-0">
+                                <div id="lgBridgeCondition" style="height: 350px;"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>

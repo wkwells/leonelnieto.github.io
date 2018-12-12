@@ -376,7 +376,7 @@ function pavementPlotlyChart2(){
                 }],
             legend: {
                 showlegend: true,
-		legend: {"orientation": "h"},
+		              legend: {"orientation": "h"},
                 y: -0.5,
                 x:0.3
             }
@@ -399,12 +399,27 @@ function bridgeConditionChart(){
         var nhs = {
             x:x,
             y:y,
-            mode: "lines+markers",
+            type: 'bar',
             name:"Average BHI of NHS Bridges",
-            text:['Target: 85'],
-            type: 'scatter',
-            line:{shape:'spline'}
+            text: ["Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85"],
+            marker: {
+            color: '#f1c232'
+            }
         };
+        var data = [nhs];
+        var layout = {title: 'NHS BHI',
+            shapes:[{
+                    type: 'line',
+                    xref: 'paper',
+                    x0:0,
+                    y0:85,
+                    x1:1,
+                    y1:85,
+                    line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
+                }],
+                yaxis: {range: [50, 100]}
+              };
+        Plotly.newPlot('nhsBridgeCondition',data,layout);
         y = [];
         for(var i = 0;i < j.length; i++){
             y.push(parseFloat(j[i]["state_inv_avg"]));
@@ -412,12 +427,27 @@ function bridgeConditionChart(){
         var state = {
             x:x,
             y:y,
-            mode: "lines+markers",
             name:"Average BHI of State Bridges",
-            text:['Target: 80'],
-            type: 'scatter',
-            line:{shape:'spline'}
+            text: ["Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80"],
+            type: 'bar',
+            marker: {
+            color: '#0b5394'
+          }
         };
+        data = [];
+        data = [state];
+        layout = [];
+        layout = {title: 'State BHI',
+            shapes:[{
+                    type: 'line',
+                    xref: 'paper',
+                    x0:0,
+                    y0:80,
+                    x1:1,
+                    y1:80,
+                    line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
+                }],yaxis: {range: [50, 100]}};
+        Plotly.newPlot('stateBridgeCondition',data,layout);
         y = [];
         for(var i = 0;i < j.length; i++){
             y.push(parseFloat(j[i]["loc_combined_avg"]));
@@ -425,20 +455,27 @@ function bridgeConditionChart(){
         var local = {
             x:x,
             y:y,
-            mode: "lines+markers",
             name:"Average BHI of State Bridges",
-            text:['Target: 75'],
-            type: 'scatter',
-            line:{shape:'spline'}
+            text:['Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75'],
+            type: 'bar',
+            marker: {
+            color: '#76a5af'
+          }
         };
-        var data = [nhs,state,local];
-        var layout = {showlegend: true,
-            legend: {
-                'orientation': 'h',
-                y: -0.5,
-                x:0.3
-            }};
-        Plotly.newPlot('bridgeConditionChart',data,layout);
+        data = [];
+        data = [local];
+        layout = [];
+        layout = {title: 'Local Governments BHI',
+            shapes:[{
+                    type: 'line',
+                    xref: 'paper',
+                    x0:0,
+                    y0:75,
+                    x1:1,
+                    y1:75,
+                    line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
+                }],yaxis: {range: [50, 100]}};
+        Plotly.newPlot('lgBridgeCondition',data,layout);
     });
 }
 //Operational ATMS charts
@@ -674,6 +711,12 @@ function zeroFatalitiesPM(region){
             };
             data = [];
             data = [actual];
+            layout = {
+                legend: {
+                    'orientation': 'h',
+                    y: -0.5,
+                    x:0.3
+                },yaxis: {range: [0, 10]}};
             Plotly.newPlot('internalFatalities',data,layout);
             //refetch different query and hope that it works and plot internal injuries and equipment damage
             var url = 'https://dashboard.udot.utah.gov/resource/jvx4-hyvf.json';
