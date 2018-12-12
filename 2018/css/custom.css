@@ -87,3 +87,13 @@ body {
 @keyframes spin {
   100% {transform: rotate(1turn); }
 }
+.rotate:hover {
+  -webkit-transform: rotateZ(-30deg);
+  -ms-transform: rotateZ(-30deg);
+  transform: rotateZ(30deg);
+}
+.shrink:hover {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        transform: scale(0.8);
+}
