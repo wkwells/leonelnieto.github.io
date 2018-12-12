@@ -7,7 +7,9 @@ fetch(definitive_url)
   .then(function(response){
 	response.json()
 	  .then(function(data){
-		document.getElementById('indexNumZF').innerHTML = data[0].safety;
+      if(document.getElementById("indexNumZF") !== null) {
+        document.getElementById('indexNumZF').innerHTML = data[0].safety;
+      }
 	  });
   })
   .catch(function(error) {
@@ -22,7 +24,9 @@ fetch(definitive_url)
   .then(function(response){
 	response.json()
 	  .then(function(data){
-		document.getElementById('indexNumOM').innerHTML = data[0].mobility;
+      if(document.getElementById("indexNumOM") !== null){
+          document.getElementById('indexNumOM').innerHTML = data[0].mobility;
+      }
 	  });
   })
   .catch(function(error) {
@@ -37,7 +41,9 @@ fetch(definitive_url)
   .then(function(response){
 	response.json()
 	  .then(function(data){
-		document.getElementById('indexNumPI').innerHTML = data[0].infrastructure;
+      if(document.getElementById("indexNumPI") !== null){
+          document.getElementById('indexNumPI').innerHTML = data[0].infrastructure;
+      }
 	  });
   })
   .catch(function(error) {
@@ -145,7 +151,7 @@ function safetyMetricChart(entity){
         };
         config.element = 'stacked';
         config.stacked = true;
-        Morris.Bar(config);    
+        Morris.Bar(config);
     });
 }
 //Mobility Metrics Chart,Page specific excecute on page
@@ -181,7 +187,7 @@ function mobilityMetricChart(entity){
         };
         config.element = 'stacked2';
         config.stacked = true;
-        Morris.Bar(config);    
+        Morris.Bar(config);
     });
 }
 //Infrastructure Metrics Chart,Page specific excecute on page
@@ -217,7 +223,7 @@ function infrastructureMetricChart(entity){
         };
         config.element = 'stacked3';
         config.stacked = true;
-        Morris.Bar(config);    
+        Morris.Bar(config);
     });
 }
 //Pavement pltly Chart
@@ -551,7 +557,7 @@ function zeroFatalitiesPM(region){
             } else if(j[i]["category"] === "Crashes" && parseInt(j[i]["year"]) >2010){
                 cra.push(parseInt(j[i]["actual"]));
                 craT.push(parseInt(j[i]["target"]));
-            } 
+            }
         }
         var actual = {
             x:x,//xbr = Year
@@ -678,7 +684,7 @@ function zeroFatalitiesPM(region){
                 x=[];
                 fat = [];//recycle variables, use for rate
                 fatT = []; //use for target
-                inj = []; 
+                inj = [];
                 injT = [];
                 for(var i = 0;i < j.length; i++){
                     x.push(j[i]["sorting_order"]);
@@ -738,7 +744,7 @@ function zeroFatalitiesPM(region){
                 data = [];
                 data = [actual,target];
                 Plotly.newPlot('injuryRate',data,layout);
-                }); 
+                });
         });
     });
 }
@@ -864,7 +870,7 @@ function optimizeMobilityCharts(){
                             x.push(threletterMonth(j[i]["axislabel"]));
                             if(j[i]["whichwinter"] === "PREVIOUS WINTER"){
                                 z.push(0);
-                                y.push(parseFloat(j[i]["performance_1"]));                                
+                                y.push(parseFloat(j[i]["performance_1"]));
                             }else if(j[i]["whichwinter"] === "CURRENT WINTER"){
                                 y.push(0);
                                 z.push(parseFloat(j[i]["performance_1"]));
