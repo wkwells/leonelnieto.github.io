@@ -15,7 +15,7 @@ body {
 @media (min-width: 992px) {
   body {
     padding-top: 0;
-    padding-left: 17rem;
+    padding-left: 9rem;
   }
 }
 
@@ -179,7 +179,7 @@ p.lead {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    width: 17rem;
+    width: 9rem;
     height: 100vh;
   }
   #sideNav .navbar-brand {
@@ -319,16 +319,17 @@ a:hover, a:focus, a:active {
 }
 
 .icon {
-  display: block;
+  display: inline;
   margin: 0 auto;
   height: 16vh;
   color: #fff;
+  vertical-align: middle;
 }
 .active div span .icon {
   color: #5a87c5 !important;
 }
 .iconspan{
-  font-size: 14vh;
+  font-size: 12vh;
 }
 
 .overlay {
@@ -357,7 +358,6 @@ a:hover, a:focus, a:active {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  white-space: nowrap;
 }
 .no-border {
   border: none !important;
