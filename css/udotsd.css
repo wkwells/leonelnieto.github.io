@@ -46,7 +46,9 @@ h6 {
   opacity: 1;
   font-size: 5em;
 }
-
+#stateheader div {
+  z-index: 1;
+}
 /*Style for video on masthead*/
 .mastheadvideo {
   position: relative;
@@ -161,7 +163,7 @@ p.lead {
   outline-color: #d48a6e;
 }
 #sideNav .nav-item {
-  height: 16vh;
+  height: 16.66vh;
 }
 
 @media (min-width: 992px) {
@@ -412,7 +414,7 @@ text-align: right;
 
 .scrollArrow {
   position: absolute;
-  bottom: 20px;
+  bottom: 0px;
   left: 50%;
   z-index: 2;
   display: inline-block;
