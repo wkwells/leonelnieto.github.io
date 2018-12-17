@@ -504,3 +504,37 @@ text-align: right;
     opacity: 0;
   }
 }
+.pi-chart-container {
+  position: relative;
+  margin: auto;
+  height: 90%;
+  width: 90%;
+}
+#strategies-tabs ul .nav-item {
+  position: relative;
+  cursor: pointer;
+}
+.slide-me-up {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #008CBA;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+#strategies-tabs ul .nav-item:hover .slide-me-up {
+  height: 100%;
+}
+.slide-me-text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}

@@ -90,27 +90,31 @@
           <div id="stateheader">
               <script type="text/javascript" src="https://www.utah.gov/nav/navheader.js"></script>
           </div>
-          <div class="container h-100">
+          <div class="container-fluid h-100">
             <div class="row h-25 align-items-center">
-                <div class="col-12 text-center">
+                <div class="col-8">
                   <h1 class="m-0 display-3 bg-light text-dark">Preserve Infrastructure</h1>
                 </div>
             </div>
             <div class="row h-50">
-                <div class="col-lg-6 text-center h-50">
-                  <div class="col-lg-12 h-25">
-                    <div class="card udot-bg-gray h-25">
-                      <div class="card-body">
-                        <h6>Measure Graph</h6>
-                        <canvas id="pi-kpi-chart" width="100%" height=""></canvas>
+                <div class="col-lg-6 text-center h-100">
+                  <div class="col-lg-12 h-50 pb-3">
+                    <div class="card udot-bg-gray h-100">
+                      <div class="card-body h-100">
+                        <h6>Infrastructure Performance Measures</h6>
+                        <div class="pi-chart-container">
+                            <canvas id="pi-kpi-chart"></canvas>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-12">
-                    <div class="card udot-bg-gray h-25">
-                      <div class="card-body">
-                        <h6>Hist Graph</h6>
-                        <canvas id="pi-line-chart" width="100%" height=""></canvas>
+                  <div class="col-lg-12 h-50">
+                    <div class="card udot-bg-gray h-100">
+                      <div class="card-body h-100">
+                        <h6>Historical Infrastructure Index</h6>
+                        <div class="pi-chart-container">
+                            <canvas id="pi-line-chart"></canvas>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -118,14 +122,16 @@
                 <div class="col-lg-6 text-center">
                   <div class="card udot-bg-gray h-100">
                     <div class="card-body">
-                      <h6>Pie chart</h6>
-                      <canvas id="pi-goalpage-doughut-chart" width="100%" height="100%"></canvas>
+                      <h6>Infrastructure Index</h6>
+                      <div class="pi-chart-container">
+                          <canvas id="pi-goalpage-doughut-chart"></canvas>
+                      </div>
                     </div>
                   </div>
                 </div>
             </div>
           </div>
-          <a class="scrollArrow js-scroll-trigger" href="#aboutUDOT"><span></span>Scroll</a>
+          <a class="scrollArrow js-scroll-trigger" href="#strategies"><span></span>Scroll</a>
         </header>
       <hr class="m-0">
       <!--Strategies Section wit Tabs -->
@@ -133,13 +139,112 @@
         <!--Section wrapper -->
         <div class="my-auto w-100">
           <!--Strategies First row-->
+          <div class="container-fluid text-center" id="strategies-tabs">
+            <ul class="nav mb-3 nav-fill" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-pavement-tab" data-toggle="pill" href="#pills-pavement" role="tab" aria-controls="pills-pavement" aria-selected="true">
+                  <i class="fas fa-layer-group fa-4x"></i><br >Pavement Management
+                  <div class="slide-me-up"><div class="slide-me-text">Pavement Management Strategies</div></div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-bridge-tab" data-toggle="pill" href="#pills-bridge" role="tab" aria-controls="pills-bridge" aria-selected="false">
+                  <i class="fas fa-drafting-compass fa-4x"></i><br >Bridge Management
+                  <div class="slide-me-up"><div class="slide-me-text">Bridge Management Strategies</div></div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-trafsigs-tab" data-toggle="pill" href="#pills-trafsigs" role="tab" aria-controls="pills-trafsigs" aria-selected="false">
+                  <i class="fas fa-traffic-light fa-4x"></i><br >Traffic Signals
+                  <div class="slide-me-up"><div class="slide-me-text">Traffic Signals & ATMS Management Strategies</div></div>
+                </a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-pavement" role="tabpanel" aria-labelledby="pills-pavement-tab">
+                <div class="row">
+                  <div class="col-12">
+                    <h4 class="text-left">Pavement Mangement</h4>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <p class="card-text text-left lead">Under the philosophy, “good roads cost less,” UDOT manages more than 16,000 lane miles of pavement throughout the state. We take a proactive approach to preserve and rehabilitate these assets to achieve the greatest long-term benefit.</p>
+                        <p class="card-text text-left lead">UDOT prioritize pavement based on the amount of daily vehicle usage and freight:</p>
+                        <p class="card-text text-left lead">High volume system: Interstate (such as I-15 or I-80), most of our National Highway System and other roads with over 1,000 vehicles a day. These roads carry 98 percent of traffic so our goal is to maintain the current condition levels with over 60 percent in good condition and less than 5 percent in poor condition.</p>
+                        <p class="card-text text-left lead">Low volume system: Includes roads primarily in the rural portions of our state with less than 1,000 vehicles a day. Our goal is to improve our current condition levels to previous levels with over 30 percent of mileage in good condition and less than 20 percent in poor condition.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="img/pavement-mangement.png">
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="img/high-volume-low-volume-map.jpg">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pills-bridge" role="tabpanel" aria-labelledby="pills-bridge-tab">
+                <div class="row">
+                  <div class="col-12">
+                    <h4 class="text-center">Bridge Mangement</h4>
+                    <p class="text-left lead">The condition of bridges in our inventory is the envy of the country. We strategically invest our funding to proactively preserve, rehabilitate and reconstruct our structures. UDOT uses the Bridge Health Index (BHI) which measures and tracks the overall structural condition of the three categories of bridges in our system.</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="card">
+                      <i class="fas fa-map-marker-alt fa-5x card-img-top"></i>
+                      <h4 class="card-title">National Highway System</h4>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="card">
+                      <i class="fas fa-map-marker-alt fa-5x card-img-top"></i>
+                      <h4 class="card-title">State Owened Bridges</h4>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="card">
+                      <i class="fas fa-map-marker-alt fa-5x card-img-top"></i>
+                      <h4 class="card-title">Locally Owened Bridges</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pills-trafsigs" role="tabpanel" aria-labelledby="pills-trafsigs-tab">
+                <div class="row">
+                  <div class="col-12">
+                    <h4 class="text-right">Signals &amp; Traffic Management Systems</h4>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <p class="card-text text-left lead">Maintaining and repairing our traffic signals and advanced traffic signal ensures consistent reliability and extends the life-cycle of these devices. This proactive approach includes determining the end-of-life for each device to determine when service will be needed to replace, upgrade, or decommissioned as well as detect the number in good working condition.</p>
+                        <p class="card-text text-left lead">UDOT is adopting a complete lifecycle approach to ATMS devices and traffic signal management to achieve system reliability. This proactive approach includes determining the end-of-life for each device to determine when service will be needed to replace, upgrade or decommissioned as well as the number in good working condition.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="card">
+                        <img class="card-img-top" src="img/traffic signals.jpg">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <!--./Strategies First Row ends -->
-          <hr class="m-2 no-border">
-          <!--Strategies Second Row With Tabs ends -->
-            <!--Check out this code pen https://codepen.io/shubhamc_007/pen/PmGGRY -->
-          <!--./Strategies Second Row With Tabs ends -->
         </div>
-        <a class="scrollArrow js-scroll-trigger" href="#strategicGoals"><span></span>Scroll</a>
+        <a class="scrollArrow js-scroll-trigger" href="#performanceMeasures"><span></span>Scroll</a>
         <!--/.Section Wrapper -->
       </section>
       <!--./Strategies Section with Tabs end -->

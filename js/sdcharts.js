@@ -238,6 +238,7 @@ function drawGoalCharts() {
   });
 }
 //Chart for individual goal pages
+//Preserve Infrastructure Charts
 function drawPICharts(){
   var url = "https://dashboard.udot.utah.gov/resource/rqv9-ry2j.json?entity=Statewide";
   fetch(url).then(function(response){
@@ -269,7 +270,7 @@ function drawPICharts(){
           fontStyle: 'proxima-nova, sans-serif', // Default is Arial
           sidePadding: 20 // Defualt is 20 (as a percentage)
 				}
-			}
+			},
 		}
 	 };
   	var ctx = document.getElementById("pi-goalpage-doughut-chart").getContext("2d");
@@ -291,7 +292,7 @@ function drawPICharts(){
       var linechartData = {
         labels: years,
         datasets: [{
-          label: "Safety Index",
+          label: "Infrastructure Index",
           data: piData,
           borderColor: "#5a87c5"
         }]
@@ -305,13 +306,49 @@ function drawPICharts(){
           labels: {
             boxWidth: 80
           }
-        }
+        },
+        maintainAspectRatio: false
       };
       new Chart(piLineChart, {
         type: 'line',
         data: linechartData,
         options: chartOptions,
 
+      });
+      //Third fetch for stacked KPI Charts charts
+      url = "https://dashboard.udot.utah.gov/resource/rqv9-ry2j.json?$select=pavement,bridges,atms,signals&entity=Statewide";
+      fetch(url).then(function(response){
+        return response.json();
+      }).then(function(j){
+        var targetMet = [parseFloat(j[0]["atms"]),parseFloat(j[0]["bridges"]),parseFloat(j[0]["pavement"]),parseFloat(j[0]["signals"])];
+        var targetRem = [100 - parseFloat(j[0]["atms"]),100 - parseFloat(j[0]["bridges"]),100 - parseFloat(j[0]["pavement"]),100 - parseFloat(j[0]["signals"])];
+        var kpiChartData = {
+          labels: ["ATMS","Bridges","Pavements","Signals"],
+          datasets: [
+            {label: 'Target Met',
+             data:targetMet,
+             backgroundColor:'#5b87c6'},
+            {label: 'Target Remaining',
+             data:targetRem,
+             backgroundColor:'#eb7523'}
+          ]
+        }
+        var piKPIChart = document.getElementById('pi-kpi-chart');
+        new Chart(piKPIChart,{
+          type: 'bar',
+          data:kpiChartData,
+          options: {
+            scales: {
+              xAxes: [{ stacked: true }],
+              yAxes: [{ stacked: true }]
+            },
+            responsive: true,
+            animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+            maintainAspectRatio: false
+          }
+        });
+      }).catch(function(err){
+        console.log("(*_*) if you see me there is with the third fetch..."+err);
       });
     }).catch(function(err){
       console.log("(*_*) if you see me there is with the second fetch..."+err);
