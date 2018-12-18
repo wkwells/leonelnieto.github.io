@@ -135,11 +135,14 @@
         </header>
       <hr class="m-0">
       <!--Strategies Section wit Tabs -->
-      <section class="udotsd-section p-3 p-lg-5 d-flex flex-column udot-bg-1 position-relative" id="strategies">
+      <section class="udotsd-section p-3 p-lg-5 d-flex flex-column udot-bg-2 position-relative" id="strategies">
         <!--Section wrapper -->
         <div class="my-auto w-100">
           <!--Strategies First row-->
           <div class="container-fluid text-center" id="strategies-tabs">
+            <div class="content-section-heading">
+                <h3 class="mb-1 text-center">Strategies</h3>
+            </div>
             <ul class="nav mb-3 nav-fill" id="pills-tab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="pills-pavement-tab" data-toggle="pill" href="#pills-pavement" role="tab" aria-controls="pills-pavement" aria-selected="true">
@@ -250,40 +253,95 @@
       <!--./Strategies Section with Tabs end -->
       <hr class="m-0">
       <!-- Section on Performance Measures -->
-      <section class="udotsd-section p-3 p-lg-5 d-flex flex-column udot-bg-2" id="performanceMeasures">
+      <section class="udotsd-section p-3 p-lg-5 d-flex flex-column udot-bg-3" id="performanceMeasures">
         <!--Section Wrapper -->
-        <div class="my-auto w-100">
-          <!--First Row Under Strategic Goals this will house pie charts-->
-          <div class="row goalCharts">
-            <div class="col-md-4">
-              <div class="card text-center">
-                <div class="card-body">
-                  <h5 class="card-title">Zero Fatalities</h5>
-                  <canvas id="zero-fatalities-doughut-chart" width="100%" height="100%"></canvas>
-                  <canvas id="zero-fatalities-line-chart" width="100%" height="100%"></canvas>
-                </div>
+        <div class="my-auto w-100 container-fluid py-4">
+          <!--Performance Measures Rows-->
+              <div class="content-section-heading">
+                  <h3 class="mb-1 text-white text-center">Infrastructure Performance Measures</h3>
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card text-center">
-                <div class="card-body">
-                  <h5 class="card-title">Optimzie Mobility</h5>
-                  <canvas id="optimize-mobility-doughut-chart" width="100%" height="100%"></canvas>
-                  <canvas id="optimize-mobility-line-chart" width="100%" height="100%"></canvas>
-                </div>
+              <!--Pavement Condition text and graph -->
+              <div class="row">
+                  <div class="col-lg-12 mx-auto">
+                      <div class="card">
+                          <div class="card-body" data-aos="fade-down" data-aos-duration="3000">
+                              <h4 class="card-title text-center">Pavement Condition</h4>
+                              <p class="lead">Data on pavement condition is collected every year.</p>
+                              <p class="text-info">Target: Utah’s overall roadway condition is 80% fair or good.</p>
+                              <div id="pavementPlotlyChart" style="height: 450px;"></div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card text-center">
-                <div class="card-body">
-                  <h5 class="card-title">Preserve Infrastructure</h5>
-                  <canvas id="preserve-infrastructure-doughut-chart" width="100%" height="100%"></canvas>
-                  <canvas id="preserve-infrastructure-line-chart" width="100%" height="100%"></canvas>
-                </div>
+              <!--Bridge Condition text and graphs -->
+              <div class="row">
+                  <div class="col-sm-12 my-4 mx-auto">
+                      <div class="card">
+                          <div class="card-body" data-aos="fade-up" data-aos-duration="3000">
+                              <h4 class="card-title text-center">Bridge Condition</h4>
+                              <p class="lead">Bridge inspection is occurring year-round resulting in a frequency of every structure every two years. In March of each year, the BHI score of each structure inspected in the previous 12 months is updated. In March of each year, each structure is inspected and scored out of 100 using the Bridge Health Index (BHI).</p>
+                              <p class="lead">The Bridge Health Index of the National Highway System (NHS), State, and Local Governments and Municipalities is tracked.</p>
+                              <div class="row">
+                                <div class="col-lg-4 p-0 m-0">
+                                  <div class="card">
+                                    <div class="card-body p-0 m-0">
+                                      <div id="nhsBridgeCondition" style="height: 350px;"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-4 p-0 m-0">
+                                  <div class="card">
+                                    <div class="card-body p-0 m-0">
+                                      <div id="stateBridgeCondition" style="height: 350px;"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-4 p-0 m-0">
+                                  <div class="card">
+                                    <div class="card-body p-0 m-0">
+                                      <div id="lgBridgeCondition" style="height: 350px;"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
-          </div>
-          <!--./Frist Row Under Strategic Direction Ends -->
+              <!--Bridge Condition text and graphs -->
+              <div class="row">
+                  <div class="col-sm-12 my-4 mx-auto">
+                      <div class="card">
+                          <div class="card-body">
+                              <h4 class="card-title text-center">Automated Traffic Signal System Condition</h4>
+                              <p class="lead">These devices and signals are key infrastructure measurements to manage traffic, and provide a safe, and reliable movement of goods, services and people. The department tracks the health of these through ongoing preventative maintenance and performance monitoring.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="card h-100">
+                          <div class="card-body" data-aos="fade-up" data-aos-duration="3000">
+                              <h4 class="card-title text-center">ATMS</h4>
+                              <p class="lead">This number is determined by the percentage of operational devices.</p>
+                              <p class="text-info">Target: 95 percent of devices in operation</p>
+                              <div id="atmsOperationalChart" style="height: 400px;"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <div class="card h-100">
+                          <div class="card-body" data-aos="fade-down" data-aos-duration="3000">
+                              <h4 class="card-title text-center">Signal Condition</h4>
+                              <p class="lead">This number is determined through an annual assessment that includes all electronics and physical infrastructure.</p>
+                              <p class="text-info">Target: 95 percent of signals in average condition or above</p>
+                              <div id="signalsPlotlyChart" style="height: 400px;"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          <!--./Performance Measures Rows -->
         </div>
         <!--./Section Wrapper -->
       </section>
@@ -299,11 +357,18 @@
     <!-- alt cdn https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.0/Chart.bundle.min.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <!--Plotly Charts cdn -->
+    <script src="https://cdn.plot.ly/plotly-1.2.0.min.js"></script>
     <!-- Custom scripts for this template -->
     <script src="js/udotsd.min.js"></script>
     <script src="js/sdcharts.js"></script>
     <script>
       drawPICharts();
+      //Performance Masure charts
+      pavementPlotlyChart2();
+      bridgeConditionChart();
+      atmsOperationalChart();
+      signalsPlotlyChart();
       // var waypoint = new Waypoint({
       //     element: document.getElementById('strategicGoals'),
       //     handler: function(direction) {

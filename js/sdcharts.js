@@ -357,3 +357,252 @@ function drawPICharts(){
     console.log("{*_*} if you see me there is problem in preserve infrastructure chart..."+err);
   });
 }
+//Strategic Direction Peformance Measure charts
+//Preserve infrastructure//Infrastructure Metrics Chart,Page specific excecute on page
+//Pavement pltly Chart
+//With Forcasted Numbers
+function pavementPlotlyChart2(){
+  var todaydate = new Date();
+  var year = todaydate.getFullYear();
+    fetch("https://dashboard.udot.utah.gov/resource/hyep-ccu9.json?$where=year<="+year)
+        .then(function(response){
+            return response.json();
+    }).then(function(j){
+        var x = new Array();
+        var good = new Array();
+        var poor = new Array();
+        var fair = new Array();
+        for(var i = 0;i < j.length; i++){
+            x.push(parseInt(j[i]["year"]));
+            good.push(parseFloat(j[i]["good"]));
+            poor.push(parseFloat(j[i]["poor"]));
+            fair.push(parseFloat(j[i]["fair"]));
+        }
+        var trace1 = {
+          x:x,
+          y:good,
+          name: "% Good: IRI < 95 in/mi",
+          type: "bar",
+          marker: {color: 'rgb(40, 167, 69)'}
+        };
+        var trace3 = {
+            x:x,
+            y:fair,
+            name:"% Fair: IRI {95,170} in/mi",
+            type: "bar",
+            marker: {color: 'rgb(255, 193, 7)'}
+        };
+        var trace5 = {
+            x:x,
+            y:poor,
+            name:"% Poor: IRI > 170 in/mi",
+            type: "bar",
+            marker: {color: 'rgb(220, 53, 69)'}
+        };
+        var data = [trace1,trace3,trace5];
+        var layout = {barmode:'stack',
+            shapes:[{
+                    type: 'line',
+                    xref: 'paper',
+                    x0:0,
+                    y0:80,
+                    x1:1,
+                    y1:80,
+                    line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
+                }],
+            legend: {
+                showlegend: true,
+		              legend: {"orientation": "h"},
+                y: -0.5,
+                x:0.3
+            }
+        };
+        Plotly.newPlot('pavementPlotlyChart',data,layout);
+    });
+}
+//Bridge Plotly Charts
+function bridgeConditionChart(){
+    fetch("https://dashboard.udot.utah.gov/resource/ujbw-qqsi.json?$order=bhi_year")
+        .then(function(response){
+            return response.json();
+    }).then(function(j){
+        var x = new Array();//This will contain years in chart
+        var y = new Array(); //This will house data but will be reset after each loop
+        for(var i = 0;i < j.length; i++){
+            x.push(parseInt(j[i]["bhi_year"]));
+            y.push(parseFloat(j[i]["nhs_inv_avg"]));
+        }
+        var nhs = {
+            x:x,
+            y:y,
+            type: 'bar',
+            name:"Average BHI of NHS Bridges",
+            text: ["Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85","Target: 85"],
+            marker: {
+            color: '#f1c232'
+            }
+        };
+        var data = [nhs];
+        var layout = {title: 'NHS BHI',
+            shapes:[{
+                    type: 'line',
+                    xref: 'paper',
+                    x0:0,
+                    y0:85,
+                    x1:1,
+                    y1:85,
+                    line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
+                }],
+                yaxis: {range: [50, 100]}
+              };
+        Plotly.newPlot('nhsBridgeCondition',data,layout);
+        y = [];
+        for(var i = 0;i < j.length; i++){
+            y.push(parseFloat(j[i]["state_inv_avg"]));
+        }
+        var state = {
+            x:x,
+            y:y,
+            name:"Average BHI of State Bridges",
+            text: ["Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80","Target: 80"],
+            type: 'bar',
+            marker: {
+            color: '#0b5394'
+          }
+        };
+        data = [];
+        data = [state];
+        layout = [];
+        layout = {title: 'State BHI',
+            shapes:[{
+                    type: 'line',
+                    xref: 'paper',
+                    x0:0,
+                    y0:80,
+                    x1:1,
+                    y1:80,
+                    line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
+                }],yaxis: {range: [50, 100]}};
+        Plotly.newPlot('stateBridgeCondition',data,layout);
+        y = [];
+        for(var i = 0;i < j.length; i++){
+            y.push(parseFloat(j[i]["loc_combined_avg"]));
+        }
+        var local = {
+            x:x,
+            y:y,
+            name:"Average BHI of State Bridges",
+            text:['Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75','Target: 75'],
+            type: 'bar',
+            marker: {
+            color: '#76a5af'
+          }
+        };
+        data = [];
+        data = [local];
+        layout = [];
+        layout = {title: 'Local Governments BHI',
+            shapes:[{
+                    type: 'line',
+                    xref: 'paper',
+                    x0:0,
+                    y0:75,
+                    x1:1,
+                    y1:75,
+                    line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
+                }],yaxis: {range: [50, 100]}};
+        Plotly.newPlot('lgBridgeCondition',data,layout);
+    });
+}
+//Operational ATMS charts
+function atmsOperationalChart(){
+    fetch("https://dashboard.udot.utah.gov/resource/twwa-kcr4.json?$order=year")
+        .then(function(response){
+            return response.json();
+    }).then(function(j){
+        var x = new Array();//This will contain years in chart
+        var y = new Array(); //This will house data but will be reset after each loop
+        for(var i = 0;i < j.length; i++){
+            x.push(parseInt(j[i]["year"]));
+            y.push(parseFloat(j[i]["percent_operational"]));
+        }
+        var operational = {
+            x:x,
+            y:y,
+            mode: "lines+markers",
+            name:"% of ATMS Devices in Operation",
+            text:['Target: 90'],
+            type: 'scatter',
+            line:{shape:'spline'}
+        };
+        var data = [operational];
+        var layout = {
+            legend: {
+                'orientation': 'h',
+                y: -0.5,
+                x:0.3
+            }};
+        Plotly.newPlot('atmsOperationalChart',data,layout);
+    });
+}
+//Signal Condition Bart Stacked Chart
+function signalsPlotlyChart(){
+    fetch("https://dashboard.udot.utah.gov/resource/cqny-q9v6.json?$select=percent_average_all,percent_good_all,percent_poor_all,year&$order=year")
+        .then(function(response){
+            return response.json();
+    }).then(function(j){
+        var x = new Array();
+        var y = new Array();
+        for(var i = 0;i < j.length; i++){
+            x.push(parseInt(j[i]["year"]));
+            y.push(parseFloat(j[i]["percent_good_all"]));
+        }
+        var good = {
+          x:x,
+          y:y,
+          name: "%in Good Condition",
+          type: "bar",
+          marker: {color: 'rgb(40, 167, 69)'}
+        };
+        y = [];
+        for(var i = 0;i < j.length; i++){
+            y.push(parseFloat(j[i]["percent_average_all"]));
+        }
+        var avg = {
+            x:x,
+            y:y,
+            name:"% in Average Condition",
+            type: "bar",
+            marker: {color: 'rgb(255, 193, 7)'}
+        };
+        y = [];
+        for(var i = 0;i < j.length; i++){
+            y.push(parseFloat(j[i]["percent_poor_all"]));
+        }
+        var poor = {
+            x:x,
+            y:y,
+            name:"% in Poor Condition",
+            type: "bar",
+            marker: {color: 'rgb(220, 53, 69)'}
+        };
+        var data = [good,avg,poor];
+        var layout = {barmode:'stack',
+            shapes:[{
+                    type: 'line',
+                    xref: 'paper',
+                    x0:0,
+                    y0:95,
+                    x1:1,
+                    y1:95,
+                    line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
+                }],
+            legend: {
+                'orientation': 'h',
+                y: -0.5,
+                x:0.3
+            }
+        };
+        Plotly.newPlot('signalsPlotlyChart',data,layout);
+    });
+}
