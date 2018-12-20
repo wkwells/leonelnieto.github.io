@@ -167,9 +167,9 @@ function drawGoalCharts() {
       var piData = [];
       var years = [];
       for(var i = 0; i < j.length; i++){
-          zfData.push(parseFloat(j[i]["avg_safety"]).toFixed(2));
-          omData.push(parseFloat(j[i]["avg_mobility"]).toFixed(2));
-          piData.push(parseFloat(j[i]["avg_infrastructure"]).toFixed(2));
+          zfData.push(parseInt(j[i]["avg_safety"]));
+          omData.push(parseInt(j[i]["avg_mobility"]));
+          piData.push(parseInt(j[i]["avg_infrastructure"]));
           years.push(j[i]["year"]);
       }
       // var zfLineChart = document.getElementById("zero-fatalities-line-chart");
