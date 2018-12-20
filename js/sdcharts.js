@@ -172,35 +172,60 @@ function drawGoalCharts() {
           piData.push(parseFloat(j[i]["avg_infrastructure"]).toFixed(2));
           years.push(j[i]["year"]);
       }
-      var zfLineChart = document.getElementById("zero-fatalities-line-chart");
-      var omLineChart = document.getElementById("optimize-mobility-line-chart");
-      var piLineChart = document.getElementById("preserve-infrastructure-line-chart");
+      // var zfLineChart = document.getElementById("zero-fatalities-line-chart");
+      // var omLineChart = document.getElementById("optimize-mobility-line-chart");
+      // var piLineChart = document.getElementById("preserve-infrastructure-line-chart");
       Chart.defaults.global.defaultFontFamily = "proxima-nova, sans-serif";
       Chart.defaults.global.defaultFontSize = 14;
+      Chart.defaults.global.defaultFontColor = '#000';
       var linechartData = {
         labels: years,
         datasets: [{
           label: "Safety Index",
           data: zfData,
-          borderColor: "#5a87c5"
+          borderColor: "#5a87c5",
+          fill:false,
+          backgroundColor: "#000",
         }]
       };
       var chartOptions = {
         responsive: true,
-        animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+        animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc',
+        onComplete: function () {
+                var chartInstance = this.chart,
+                ctx = chartInstance.ctx;
+
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                this.data.datasets.forEach(function(dataset, i) {
+                var meta = chartInstance.controller.getDatasetMeta(i);
+                meta.data.forEach(function(bar, index) {
+                  var data = dataset.data[index];
+                  ctx.fillText(data, bar._model.x, bar._model.y +20);
+                });
+              });
+
+            }
+      },
         legend: {
           display: false,
           position: 'top',
           labels: {
             boxWidth: 80
           }
+        },
+        scales:{
+          yAxes: [{display: true, ticks:{beginAtZero: true, steps: 10, stepValue: 5, max: 100}}]
+        },
+        tooltips: {
+          enabled: false
         }
       };
-      new Chart(zfLineChart, {
+      var ctx = document.getElementById("zero-fatalities-line-chart")
+      new Chart(ctx, {
         type: 'line',
         data: linechartData,
-        options: chartOptions,
-
+        options: chartOptions
       });
       //redefine data
       linechartData = {
@@ -208,10 +233,13 @@ function drawGoalCharts() {
         datasets: [{
           label: "Mobility Index",
           data: omData,
-          borderColor: "#5a87c5"
+          borderColor: "#5a87c5",
+          fill:false,
+          backgroundColor: "#000",
         }]
       };
-      new Chart(omLineChart, {
+      ctx = document.getElementById("optimize-mobility-line-chart");
+      new Chart(ctx, {
         type: 'line',
         data: linechartData,
         options: chartOptions
@@ -222,10 +250,13 @@ function drawGoalCharts() {
         datasets: [{
           label: "Infrastructure Index",
           data: piData,
-          borderColor: "#5a87c5"
+          borderColor: "#5a87c5",
+          fill:false,
+          backgroundColor: "#000",
         }]
       };
-      new Chart(piLineChart, {
+      ctx = document.getElementById("preserve-infrastructure-line-chart");
+      new Chart(ctx, {
         type: 'line',
         data: linechartData,
         options: chartOptions

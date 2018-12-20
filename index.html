@@ -92,7 +92,7 @@
           </div>
           <div class="mhoverlay"></div>
           <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+            <source src="video/Strategic Direction Video.mp4" type="video/mp4">
           </video>
           <div class="container h-100">
             <div class="d-flex text-center h-100">
@@ -111,7 +111,7 @@
           <!--About UDOT first Part row-->
           <div class="row text-center">
             <div class="col-12">
-              <h3 class="text-white font-weight-bold">About UDOT</h3>
+              <h2 class="text-white font-weight-bold">About UDOT</h2>
             </div>
           </div>
           <div class="row">
@@ -135,7 +135,7 @@
               <div class="card mb-2 text-center no-border udot-bg-gray">
                 <div class="card-body">
                     <h5 class="card-title">VISION</h5>
-                    <p class="card-text text-udotblue">KEEPING UTAH MOVING</p>
+                    <p class="card-text">KEEPING UTAH MOVING</p>
                 </div>
               </div>
               <div class="card mb-2">
@@ -268,7 +268,7 @@
           <!--First Row Under Strategic Goals this will house pie charts-->
           <div class="row text-center">
             <div class="col-12">
-              <h3 class="font-weight-bold">Strategic Goals</h3>
+              <h2 class="font-weight-bold">Strategic Goals</h2>
             </div>
           </div>
           <div class="row goalCharts">
@@ -276,17 +276,19 @@
               <div class="card text-center udot-bg-2 no-border">
                 <div class="card-body">
                   <h5 class="card-title font-weight-bold alt-link" onclick="window.location='zero-fatalities.html'">Zero Fatalities</h5>
-                  <canvas id="zero-fatalities-doughut-chart" width="100%" height="100%"></canvas>
-                  <canvas id="zero-fatalities-line-chart" width="100%" height="100%"></canvas>
+                  <canvas id="zero-fatalities-doughut-chart"></canvas>
+                  <h6 class="card-header m-1 no-border">Historic Safety Index</h6>
+                  <canvas id="zero-fatalities-line-chart"></canvas>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="card text-center udot-bg-2 no-border">
                 <div class="card-body">
-                  <h5 class="card-title font-weight-bold alt-link" onclick="window.location='optimize-mobility.html'">Optimzie Mobility</h5>
-                  <canvas id="optimize-mobility-doughut-chart" width="100%" height="100%"></canvas>
-                  <canvas id="optimize-mobility-line-chart" width="100%" height="100%"></canvas>
+                  <h5 class="card-title font-weight-bold alt-link" onclick="window.location='optimize-mobility.html'">Optimize Mobility</h5>
+                  <canvas id="optimize-mobility-doughut-chart"></canvas>
+                  <h6 class="card-header m-1 no-border">Historic Mobility Index</h6>
+                  <canvas id="optimize-mobility-line-chart"></canvas>
                 </div>
               </div>
             </div>
@@ -294,8 +296,9 @@
               <div class="card text-center udot-bg-2 no-border">
                 <div class="card-body">
                   <h5 class="card-title font-weight-bold alt-link" onclick="window.location='preserve-infrastructure.html'">Preserve Infrastructure</h5>
-                  <canvas id="preserve-infrastructure-doughut-chart" width="100%" height="100%"></canvas>
-                  <canvas id="preserve-infrastructure-line-chart" width="100%" height="100%"></canvas>
+                  <canvas id="preserve-infrastructure-doughut-chart"></canvas>
+                  <h6 class="card-header m-1 no-border">Historic Safety Index</h6>
+                  <canvas id="preserve-infrastructure-line-chart"></canvas>
                 </div>
               </div>
             </div>
@@ -313,7 +316,7 @@
         <div class="my-auto w-100">
           <div class="row text-center">
             <div class="col-12">
-              <h3 class="font-weight-bold text-white">UDOT Funding</h3>
+              <h2 class="font-weight-bold text-white">UDOT Funding</h2>
             </div>
           </div>
           <!--Row Containing tabs for funding -->
@@ -323,71 +326,37 @@
                 <div class="card-body" id="ul-tabs">
                   <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" id="pills-funding-tab" data-toggle="pill" href="#pills-funding" role="tab" aria-controls="pills-funding" aria-selected="true">UDOT Funding</a>
+                      <a class="nav-link" id="pills-tif-tab" data-toggle="pill" href="#pills-tif" role="tab" aria-controls="pills-tif" aria-selected="false">
+                        <h4 class="h-25 font-weight-bold">Transportation <br />Investment Fund</h4>
+                        <h1 class="fundingPercent text-white mt-5 mb-5">80%</h1>
+                      </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-tif-tab" data-toggle="pill" href="#pills-tif" role="tab" aria-controls="pills-tif" aria-selected="false">Transportation Investment Fund</a>
+                      <a class="nav-link" id="pills-tf-tab" data-toggle="pill" href="#pills-tf" role="tab" aria-controls="pills-tf" aria-selected="false">
+                        <h4 class="h-25 font-weight-bold">Transportation <br />Fund</h4>
+                        <h1 class="fundingPercent text-white mt-5 mb-5">80%</h1>
+                      </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-tf-tab" data-toggle="pill" href="#pills-tf" role="tab" aria-controls="pills-tf" aria-selected="false">Transportation Fund</a>
+                      <a class="nav-link" id="pills-hff-tab" data-toggle="pill" href="#pills-hff" role="tab" aria-controls="pills-hff" aria-selected="false">
+                        <h4 class="h-25 font-weight-bold">Highway Federal <br />Funds</h4>
+                        <h1 class="fundingPercent text-white mt-5 mb-5">80%</h1>
+                      </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-hff-tab" data-toggle="pill" href="#pills-hff" role="tab" aria-controls="pills-hff" aria-selected="false">Highway Federal Funds</a>
+                      <a class="nav-link" id="pills-rural-tab" data-toggle="pill" href="#pills-rural" role="tab" aria-controls="pills-rural" aria-selected="false">
+                        <h4 class="h-25 font-weight-bold">Rural Transit<br />&nbsp;</h4>
+                        <h1 class="fundingPercent text-white mt-5 mb-5">80%</h1>
+                      </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-rural-tab" data-toggle="pill" href="#pills-rural" role="tab" aria-controls="pills-rural" aria-selected="false">Rural Transit</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="pills-aero-tab" data-toggle="pill" href="#pills-aero" role="tab" aria-controls="pills-aero" aria-selected="false">Aeronatics</a>
+                      <a class="nav-link" id="pills-aero-tab" data-toggle="pill" href="#pills-aero" role="tab" aria-controls="pills-aero" aria-selected="false">
+                        <h4 class="h-25 font-weight-bold">Aeronatics<br />&nbsp;</h4>
+                        <h1 class="fundingPercent text-white mt-5 mb-5">80%</h1>
+                      </a>
                     </li>
                   </ul>
                   <div class="tab-content" id="pills-tabContent">
-                    <!-- Tab One with Funding Percentages -->
-                    <div class="tab-pane fade show active h-100" id="pills-funding" role="tabpanel" aria-labelledby="pills-funding-tab">
-                      <div class="row text-center">
-                        <div class="col-md">
-                          <div class="card h-100 no-border udot-bg-3">
-                            <div class="card-body">
-                              <h4 class="card-title h-25 font-weight-bold">Transportation Investment Fund</h4>
-                              <h1 class="fundingPercent text-white mt-5 mb-5">80%</h1>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md">
-                          <div class="card h-100 no-border udot-bg-3">
-                            <div class="card-body">
-                              <h4 class="card-title h-25 font-weight-bold">Transportation Fund</h4>
-                              <h1 class="fundingPercent text-white mt-5 mb-5">80%</h1>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md">
-                          <div class="card h-100 no-border udot-bg-3">
-                            <div class="card-body">
-                              <h4 class="card-title h-25 font-weight-bold">Hihgway Federal Funds</h4>
-                              <h1 class="fundingPercent text-white mt-5 mb-5">80%</h1>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md">
-                          <div class="card h-100 no-border udot-bg-3">
-                            <div class="card-body">
-                              <h4 class="card-title h-25 font-weight-bold">Rural Transit</h4>
-                              <h1 class="fundingPercent text-white mt-5 mb-5">80%</h1>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md">
-                          <div class="card h-100 no-border udot-bg-3">
-                            <div class="card-body">
-                              <h4 class="card-title h-25 font-weight-bold">Aeronatics</h4>
-                              <h1 class="fundingPercent text-white mt-5 mb-5 ">80%</h1>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ./Tab One with Funding Percentages -->
                     <!-- Tab Two with TIF Data -->
                     <div class="tab-pane fade" id="pills-tif" role="tabpanel" aria-labelledby="pills-tif-tab">
                       <div class="row">
@@ -705,7 +674,7 @@
         <div class="my-auto w-100">
           <div class="row text-center">
             <div class="col-12">
-              <h3 class="font-weight-bold text-white">Program Briefing</h3>
+              <h2 class="font-weight-bold text-white">Program Briefing</h2>
             </div>
           </div>
           <!--Row in Program Briefing -->
@@ -746,7 +715,7 @@
         <div class="my-auto w-100">
           <div class="container-fluid text-center">
             <div class="content-section-heading">
-              <h4 class="mb-0">Tactical Measures</h4>
+              <h2 class="mb-0">Tactical Measures</h2>
               <h5 class="text-secondary mb-5">Under development and subject to change</h5>
             </div>
             <div class="row">
