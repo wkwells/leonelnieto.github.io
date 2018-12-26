@@ -92,8 +92,8 @@
           </div>
           <div class="container-fluid h-100">
             <div class="row h-25 align-items-center">
-                <div class="col-8">
-                  <h1 class="m-0 display-3 bg-light text-dark">Preserve Infrastructure</h1>
+                <div class="col-12">
+                  <h2 class="goal-page-header-title bg-light text-dark">Preserve Infrastructure</h2>
                 </div>
             </div>
             <div class="row h-50">
@@ -135,7 +135,7 @@
         </header>
       <hr class="m-0">
       <!--Strategies Section wit Tabs -->
-      <section class="udotsd-section p-3 p-lg-5 d-flex flex-column udot-bg-2 position-relative" id="strategies">
+      <section class="udotsd-section d-flex flex-column udot-bg-2 position-relative" id="strategies">
         <!--Section wrapper -->
         <div class="my-auto w-100">
           <!--Strategies First row-->
@@ -171,23 +171,45 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-lg-4">
+                  <div class="col-lg-6">
                     <div class="card">
-                      <div class="card-body">
-                        <p class="card-text text-left lead">Under the philosophy, “good roads cost less,” UDOT manages more than 16,000 lane miles of pavement throughout the state. We take a proactive approach to preserve and rehabilitate these assets to achieve the greatest long-term benefit.</p>
+                      <div class="card-body thumb-img-wrapper">
+                        <p class="card-text text-left lead">Under the philosophy, “<a href="" class="position-relative thumb-image" data-toggle="modal" data-target="#goodRoads">good roads cost less<img src="img/pavement-mangement.png"></a>,” UDOT manages more than 16,000 lane miles of pavement throughout the state. We take a proactive approach to preserve and rehabilitate these assets to achieve the greatest long-term benefit.</p>
                         <p class="card-text text-left lead">UDOT prioritize pavement based on the amount of daily vehicle usage and freight:</p>
                         <p class="card-text text-left lead">High volume system: Interstate (such as I-15 or I-80), most of our National Highway System and other roads with over 1,000 vehicles a day. These roads carry 98 percent of traffic so our goal is to maintain the current condition levels with over 60 percent in good condition and less than 5 percent in poor condition.</p>
                         <p class="card-text text-left lead">Low volume system: Includes roads primarily in the rural portions of our state with less than 1,000 vehicles a day. Our goal is to improve our current condition levels to previous levels with over 30 percent of mileage in good condition and less than 20 percent in poor condition.</p>
+                        <!-- Good Roads Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="goodRoads" tabindex="-1" role="dialog" aria-labelledby="GoodRoadsModal" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Good Roads Cost Less</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="card">
+                                        <img class="card-img-top" src="img/pavement-mangement.png">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="img/pavement-mangement.png">
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="card">
+                  <div class="col-lg-6">
+                    <div class="card p-5">
                         <img class="card-img-top" src="img/high-volume-low-volume-map.jpg">
                     </div>
                   </div>
@@ -203,19 +225,19 @@
                 <div class="row">
                   <div class="col-lg-4">
                     <div class="card">
-                      <i class="fas fa-map-marker-alt fa-5x card-img-top"></i>
+                      <i class="icon-NHS-bridge fa-10x card-img-top"></i>
                       <h4 class="card-title">National Highway System</h4>
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="card">
-                      <i class="fas fa-map-marker-alt fa-5x card-img-top"></i>
+                      <i class="icon-Utah-bridge fa-10x card-img-top"></i>
                       <h4 class="card-title">State Owened Bridges</h4>
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="card">
-                      <i class="fas fa-map-marker-alt fa-5x card-img-top"></i>
+                      <i class="icon-local-bridge fa-10x card-img-top"></i>
                       <h4 class="card-title">Locally Owened Bridges</h4>
                     </div>
                   </div>
@@ -237,7 +259,7 @@
                     </div>
                   </div>
                   <div class="col-lg-6">
-                    <div class="card">
+                    <div class="card p-5">
                         <img class="card-img-top" src="img/traffic signals.jpg">
                     </div>
                   </div>

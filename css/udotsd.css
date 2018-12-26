@@ -96,7 +96,21 @@ h6 {
     display: none;
   }
 }
-/*./end mast head vidoe styles*/
+/*./end mast head video styles*/
+.goal-page-header-title {
+  font-size: 4em;
+}
+
+@media (max-width: 1200px) {
+  .goal-page-header-title {
+    font-size: 3em;
+  }
+}
+@media (max-width: 800px) {
+  .goal-page-header-title {
+    font-size: 3em;
+  }
+}
 
 h1 {
   font-size: 6rem;
@@ -771,4 +785,18 @@ transition-delay:.2s;
 .hovereffect-2 .hoveroverlay-2 p{
   color: #fff;
   font-size: 0.8em;
+}
+.thumb-img-wrapper .thumb-image:hover {
+  z-index: 0;
+}
+.thumb-img-wrapper .thumb-image img {
+  position: absolute;
+  visibility: hidden;
+  width: 250px
+}
+.thumb-img-wrapper .thumb-image:hover img {
+  visibility: visible;
+  top: 1.5em;
+  left: 3em;
+  z-index: 2000;
 }
