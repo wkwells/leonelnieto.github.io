@@ -637,3 +637,630 @@ function signalsPlotlyChart(){
         Plotly.newPlot('signalsPlotlyChart',data,layout);
     });
 }
+//Chart for individual goal pages
+//Zero Fatalities
+function drawZFCharts(){
+  var url = "https://dashboard.udot.utah.gov/resource/rqv9-ry2j.json?entity=Statewide";
+  fetch(url).then(function(response){
+    return response.json();
+  }).then(function(data){
+    var dataIndex = data[0].safety;
+    var indexLabel =["","Safety Index"];
+		var config = {
+			type: 'doughnut',
+			data: {
+				labels: indexLabel,
+				datasets: [{
+					data: [(Math.round((100-dataIndex)*10)/10),dataIndex],
+					backgroundColor: [
+					  "#d58e61",
+					  "#5a87c5"
+					]
+				}]
+			},
+		options: {
+      defaultFontFamily: Chart.defaults.global.defaultFontFamily = "proxima-nova, sans-serif",
+      legend:{display:false},
+    	responsive: true,
+      animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+			elements: {
+				center: {
+					text: dataIndex+'%',
+          color: '#000000', // Default is #000000
+          fontStyle: 'proxima-nova, sans-serif', // Default is Arial
+          sidePadding: 20 // Defualt is 20 (as a percentage)
+				}
+			},
+		}
+	 };
+  	var ctx = document.getElementById("zf-goalpage-doughut-chart").getContext("2d");
+  	var myChart = new Chart(ctx, config);
+    //Second fetch for historical line charts
+    url = "https://dashboard.udot.utah.gov/resource/b8iq-pg44.json?$select=year,avg(safety),avg(mobility),avg(infrastructure)&$group=year&$order=year";
+    fetch(url).then(function(response){
+      return response.json();
+    }).then(function(j){
+      var piData = [];
+      var years = [];
+      for(var i = 0; i < j.length; i++){
+          piData.push(parseFloat(j[i]["avg_safety"]).toFixed(2));
+          years.push(j[i]["year"]);
+      }
+      var zfLineChart = document.getElementById("zf-line-chart");
+      Chart.defaults.global.defaultFontFamily = "proxima-nova, sans-serif";
+      Chart.defaults.global.defaultFontSize = 14;
+      var linechartData = {
+        labels: years,
+        datasets: [{
+          label: "Safety Index",
+          data: piData,
+          borderColor: "#5a87c5"
+        }]
+      };
+      var chartOptions = {
+        responsive: true,
+        animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+        legend: {
+          display: false,
+          position: 'top',
+          labels: {
+            boxWidth: 80
+          }
+        },
+        maintainAspectRatio: false
+      };
+      new Chart(zfLineChart, {
+        type: 'line',
+        data: linechartData,
+        options: chartOptions,
+      });
+      //Third fetch for stacked KPI Charts charts
+      url = "https://dashboard.udot.utah.gov/resource/rqv9-ry2j.json?$select=tf_index,tsi_index,tc_index,if_index,ii_index,ed_index&entity=Statewide";
+      fetch(url).then(function(response){
+        return response.json();
+      }).then(function(j){
+        var targetMet = [parseFloat(j[0]["ed_index"]),parseFloat(j[0]["if_index"]),parseFloat(j[0]["ii_index"]),parseFloat(j[0]["tc_index"]),parseFloat(j[0]["tf_index"]),parseFloat(j[0]["tsi_index"])];
+        var targetRem = [100 - parseFloat(j[0]["ed_index"]), 100 - parseFloat(j[0]["if_index"]), 100 - parseFloat(j[0]["ii_index"]),100 - parseFloat(j[0]["tc_index"]),100 - parseFloat(j[0]["tf_index"]),100 - parseFloat(j[0]["tsi_index"])];
+        var kpiChartData = {
+          labels: ["UDOT Equip Damage","UDOT Fatalities","UDOT Injuries","Traffic Crashes","Traffic Fatalities","Traffic Injuries"],
+          datasets: [
+            {label: 'Target Met',
+             data:targetMet,
+             backgroundColor:'#5b87c6'},
+            {label: 'Target Remaining',
+             data:targetRem,
+             backgroundColor:'#eb7523'}
+          ]
+        }
+        var zfKPIChart = document.getElementById('zf-kpi-chart');
+        new Chart(zfKPIChart,{
+          type: 'bar',
+          data:kpiChartData,
+          options: {
+            scales: {
+              xAxes: [{ stacked: true,ticks:{fontSize:12} }],
+              yAxes: [{ stacked: true }]
+            },
+            responsive: true,
+            animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+            maintainAspectRatio: false
+          }
+        });
+      }).catch(function(err){
+        console.log("(*_*) if you see me there is with the third fetch..."+err);
+      });
+    }).catch(function(err){
+      console.log("(*_*) if you see me there is with the second fetch..."+err);
+    });
+  }).catch(function(err){
+    console.log("{*_*} if you see me there is problem in preserve infrastructure chart..."+err);
+  });
+}
+//zero fatalities performance measure chart
+function zeroFatalitiesPM(region){
+    fetch("https://dashboard.udot.utah.gov/resource/4yir-8226.json?$order=year&$where=region='"+region+"'")
+        .then(function(response){
+            return response.json();
+    }).then(function(j){
+        var x = new Array();//This will contain years in chart
+        var fat = new Array(); //This will house data but will be reset after each loop
+        var fatT = new Array(); //This will house data but will be reset after each loop
+        var inj = new Array(); //This will house data but will be reset after each loop
+        var injT = new Array(); //This will house data but will be reset after each loop
+        var cra = new Array(); //This will house data but will be reset after each loop
+        var craT = new Array(); //This will house data but will be reset after each loop
+        for(var i = 0;i < j.length; i++){
+            if(j[i]["category"] === "Fatalities" && parseInt(j[i]["year"]) >2010){
+                x.push(parseInt(j[i]["year"]));
+                fat.push(parseInt(j[i]["actual"]));
+                fatT.push(parseInt(j[i]["target"]));
+            }else if(j[i]["category"] === "Injuries" && parseInt(j[i]["year"]) >2010){
+                inj.push(parseInt(j[i]["actual"]));
+                injT.push(parseInt(j[i]["target"]));
+            } else if(j[i]["category"] === "Crashes" && parseInt(j[i]["year"]) >2010){
+                cra.push(parseInt(j[i]["actual"]));
+                craT.push(parseInt(j[i]["target"]));
+            }
+        }
+        var actual = {
+            x:x,//xbr = Year
+            y:fat, //yvar =data
+            mode: "lines+markers",
+            name:"Actual Fatalities",
+            type: 'scatter',
+            line:{shape:'spline'}
+        };
+        var target = {
+            x:x,//xbr = Year
+            y:fatT, //yvar =data
+            mode: "lines+markers",
+            name:"Target Fatalities",
+            type: 'scatter',
+            line:{shape:'spline'}
+        };
+//        var forecast = {
+//            x:[2018,2019,2020],//xbr = Year
+//            y:[forecastYear(2018,fat,x),forecastYear(2019,fat,x),forecastYear(2020,fat,x)], //yvar =data
+//            mode: "lines+markers",
+//            name:"Linear Forecast",
+//            type: 'scatter',
+//            line:{shape:'spline'}
+//        };
+        var data = [actual,target];
+        var layout = {
+            legend: {
+                'orientation': 'h',
+                y: -0.5,
+                x:0.3
+            }};
+        Plotly.newPlot('trafficFatalities',data,layout);
+        actual = [];
+        actual = {
+            x:x,//xbr = Year
+            y:inj, //yvar =data
+            mode: "lines+markers",
+            name:"Actual Injuries",
+            type: 'scatter',
+            line:{shape:'spline'}
+        };
+        target =[];
+        target = {
+            x:x,//xbr = Year
+            y:injT, //yvar =data
+            mode: "lines+markers",
+            name:"Target Injuries",
+            type: 'scatter',
+            line:{shape:'spline'}
+        };
+//        forecast = [];
+//        forecast = {
+//            x:[2018,2019,2020],//xbr = Year
+//            y:[forecastYear(2018,inj,x),forecastYear(2019,inj,x),forecastYear(2020,inj,x)], //yvar =data
+//            mode: "lines+markers",
+//            name:"Linear Forecast",
+//            type: 'scatter',
+//            line:{shape:'spline'}
+//        };
+        data = [];
+        data = [actual,target];
+        Plotly.newPlot('trafficInjuries',data,layout);
+        //Set data for crhases and plot
+        actual = [];
+        actual = {
+            x:x,//xbr = Year
+            y:cra, //yvar =data
+            mode: "lines+markers",
+            name:"Actual Injuries",
+            type: 'scatter',
+            line:{shape:'spline'}
+        };
+        target =[];
+        target = {
+            x:x,//xbr = Year
+            y:craT, //yvar =data
+            mode: "lines+markers",
+            name:"Target Injuries",
+            type: 'scatter',
+            line:{shape:'spline'}
+        };
+//        forecast = [];
+//        forecast = {
+//            x:[2018,2019,2020],//xbr = Year
+//            y:[forecastYear(2018,cra,x),forecastYear(2019,cra,x),forecastYear(2020,cra,x)], //yvar =data
+//            mode: "lines+markers",
+//            name:"Linear Forecast",
+//            type: 'scatter',
+//            line:{shape:'spline'}
+//        };
+        data = [];
+        data = [actual,target];
+        Plotly.newPlot('trafficCrashes',data,layout);
+        //refetch different query and hope that it works and plot internal fatalities
+        fetch("https://dashboard.udot.utah.gov/resource/cd7e-zhau.json?$select=statewide,year")
+        .then(function(response){
+            return response.json();
+        }).then(function(j){
+            x=[];
+            fat =[]; //recyle variables as much as possible
+            for(var i = 0;i < j.length; i++){
+            x.push(parseInt(j[i]["year"]));
+            fat.push(parseInt(j[i]["statewide"]));
+            }
+            actual = [];
+            actual = {
+                x:x,//xbr = Year
+                y:fat, //yvar =data
+                mode: "lines+markers",
+                name:"Internal Fatalities",
+                type: 'scatter',
+                line:{shape:'spline'}
+            };
+            data = [];
+            data = [actual];
+            layout = {
+                legend: {
+                    'orientation': 'h',
+                    y: -0.5,
+                    x:0.3
+                },yaxis: {range: [0, 10]}};
+            Plotly.newPlot('internalFatalities',data,layout);
+            //refetch different query and hope that it works and plot internal injuries and equipment damage
+            var url = 'https://dashboard.udot.utah.gov/resource/jvx4-hyvf.json';
+            fetch(url+"?$select=sorting_order,damage_rate,damage_target,injury_rate,injury_target&$where=sorting_order>201710&$order=sorting_order asc")
+            .then(function(response){
+                return response.json();
+            }).then(function(j){
+                x=[];
+                fat = [];//recycle variables, use for rate
+                fatT = []; //use for target
+                inj = [];
+                injT = [];
+                for(var i = 0;i < j.length; i++){
+                    x.push(j[i]["sorting_order"]);
+                    fat.push(parseFloat(j[i]["damage_rate"]));
+                    fatT.push(parseFloat(j[i]["damage_target"]));
+                    inj.push(parseFloat(j[i]["injury_rate"]));
+                    injT.push(parseFloat(j[i]["injury_target"]));
+                }
+                actual =[];
+                actual = {
+                    x:x,//xbr = Year
+                    y:fat, //yvar =data
+                    mode: "lines+markers",
+                    name:"Damage Rate",
+                    type: 'scatter',
+                    line:{shape:'spline'}
+                };
+                target =[];
+                target = {
+                    x:x,//xbr = Year
+                    y:fatT, //yvar =data
+                    mode: "lines+markers",
+                    name:"Target",
+                    type: 'scatter',
+                    line:{shape:'spline'}
+                };
+                layout = [];
+                layout = {
+                    xaxis:{type:'category'},
+                    legend: {
+                        'orientation': 'h',
+                        y: -0.5,
+                        x:0.3
+                    }};
+                data = [];
+                data = [actual,target];
+                Plotly.newPlot('equipmentDamage',data,layout);
+                //Draw Damage Rate Plat
+                actual =[];
+                actual = {
+                    x:x,//xbr = Year
+                    y:inj, //yvar =data
+                    mode: "lines+markers",
+                    name:"Injury Rate",
+                    type: 'scatter',
+                    line:{shape:'spline'}
+                };
+                target =[];
+                target = {
+                    x:x,//xbr = Year
+                    y:injT, //yvar =data
+                    mode: "lines+markers",
+                    name:"Target",
+                    type: 'scatter',
+                    line:{shape:'spline'}
+                };
+                data = [];
+                data = [actual,target];
+                Plotly.newPlot('injuryRate',data,layout);
+                });
+        });
+    });
+}
+//Chart for individual goal pages
+//Optimize Mobility
+function drawOMCharts(){
+  var url = "https://dashboard.udot.utah.gov/resource/rqv9-ry2j.json?entity=Statewide";
+  fetch(url).then(function(response){
+    return response.json();
+  }).then(function(data){
+    var dataIndex = data[0].mobility;
+    var indexLabel =["","Mobility Index"];
+		var config = {
+			type: 'doughnut',
+			data: {
+				labels: indexLabel,
+				datasets: [{
+					data: [(Math.round((100-dataIndex)*10)/10),dataIndex],
+					backgroundColor: [
+					  "#d58e61",
+					  "#5a87c5"
+					]
+				}]
+			},
+		options: {
+      defaultFontFamily: Chart.defaults.global.defaultFontFamily = "proxima-nova, sans-serif",
+      legend:{display:false},
+    	responsive: true,
+      animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+			elements: {
+				center: {
+					text: dataIndex+'%',
+          color: '#000000', // Default is #000000
+          fontStyle: 'proxima-nova, sans-serif', // Default is Arial
+          sidePadding: 20 // Defualt is 20 (as a percentage)
+				}
+			},
+		}
+	 };
+  	var ctx = document.getElementById("om-goalpage-doughut-chart").getContext("2d");
+  	var myChart = new Chart(ctx, config);
+    //Second fetch for historical line charts
+    url = "https://dashboard.udot.utah.gov/resource/b8iq-pg44.json?$select=year,avg(safety),avg(mobility),avg(infrastructure)&$group=year&$order=year";
+    fetch(url).then(function(response){
+      return response.json();
+    }).then(function(j){
+      var piData = [];
+      var years = [];
+      for(var i = 0; i < j.length; i++){
+          piData.push(parseFloat(j[i]["avg_mobility"]).toFixed(2));
+          years.push(j[i]["year"]);
+      }
+      var omLineChart = document.getElementById("om-line-chart");
+      Chart.defaults.global.defaultFontFamily = "proxima-nova, sans-serif";
+      Chart.defaults.global.defaultFontSize = 14;
+      var linechartData = {
+        labels: years,
+        datasets: [{
+          label: "Mobility Index",
+          data: piData,
+          borderColor: "#5a87c5"
+        }]
+      };
+      var chartOptions = {
+        responsive: true,
+        animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+        legend: {
+          display: false,
+          position: 'top',
+          labels: {
+            boxWidth: 80
+          }
+        },
+        maintainAspectRatio: false
+      };
+      new Chart(omLineChart, {
+        type: 'line',
+        data: linechartData,
+        options: chartOptions,
+      });
+      //Third fetch for stacked KPI Charts charts
+      url = "https://dashboard.udot.utah.gov/resource/rqv9-ry2j.json?$select=delay,reliability,mode_split,snow&entity=Statewide";
+      fetch(url).then(function(response){
+        return response.json();
+      }).then(function(j){
+        var targetMet = [parseFloat(j[0]["delay"]),parseFloat(j[0]["reliability"]),parseFloat(j[0]["mode_split"]),parseFloat(j[0]["snow"])];
+        var targetRem = [100 - parseFloat(j[0]["delay"]), 100 - parseFloat(j[0]["reliability"]), 100 - parseFloat(j[0]["mode_split"]),100 - parseFloat(j[0]["snow"])];
+        var kpiChartData = {
+          labels: ["I-15 Delay","I-15 Reliability","Mode Split","Snow Removal"],
+          datasets: [
+            {label: 'Target Met',
+             data:targetMet,
+             backgroundColor:'#5b87c6'},
+            {label: 'Target Remaining',
+             data:targetRem,
+             backgroundColor:'#eb7523'}
+          ]
+        }
+        var omKPIChart = document.getElementById('om-kpi-chart');
+        new Chart(omKPIChart,{
+          type: 'bar',
+          data:kpiChartData,
+          options: {
+            scales: {
+              xAxes: [{ stacked: true }],
+              yAxes: [{ stacked: true }]
+            },
+            responsive: true,
+            animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+            maintainAspectRatio: false
+          }
+        });
+      }).catch(function(err){
+        console.log("(*_*) if you see me there is with the third fetch..."+err);
+      });
+    }).catch(function(err){
+      console.log("(*_*) if you see me there is with the second fetch..."+err);
+    });
+  }).catch(function(err){
+    console.log("{*_*} if you see me there is problem in preserve infrastructure chart..."+err);
+  });
+}
+//Optimize mobility Peformance Charts
+function optimizeMobilityCharts(){
+    //fetach and draw delay graph
+    fetch('https://dashboard.udot.utah.gov/resource/whr3-7dxf.json?$select=i_15_delay,total,date&$where=not(month=%22Year%22)and%20not(sequence=55)&$order=sequence')
+        .then(function(response){
+            return response.json();
+    }).then(function(j){
+        var x = new Array();//This will contain years in chart
+        var y = new Array(); //This will house data but will be reset after each loop
+        var z = new Array();
+        for(var i = 0;i < j.length; i++){
+            x.push(j[i]["date"]);
+            y.push(parseInt(j[i]["i_15_delay"]));
+            z.push(parseInt(j[i]["total"]));
+        }
+        var trace1 = {
+            x:x,
+            y:y,
+            mode: 'lines+markers',
+            line: {shape: 'spline'},
+            type: 'scatter',
+            name:"I-15 Delay Delay"
+        };
+        var trace2 = {
+            x:x,
+            y:z,
+            mode: 'lines+markers',
+            line: {shape: 'spline'},
+            type: 'scatter',
+            name:"Target"
+        };
+        var data = [trace1,trace2];
+        var layout = {
+            xaxis: {
+                type: 'category'
+              }
+            };
+        Plotly.newPlot('i15delaygraph',data,layout);
+        //Fetch and draw reliability graph
+        fetch('https://dashboard.udot.utah.gov/resource/mfvh-usiw.json?$select=reliability_score,season,target&$where=year%20%3E%202014&$order=sequence')
+        .then(function(response){
+            return response.json();
+        }).then(function(j){
+            x = [];
+            y=[];
+            z = [];
+            for(var i = 0;i < j.length; i++){
+                x.push(j[i]["season"]);
+                y.push(parseInt(j[i]["reliability_score"]));
+                z.push(parseInt(j[i]["target"]));
+            }
+            trace1 = [];
+            trace1 = {
+                x:x,
+                y:y,
+                mode: 'lines+markers',
+                line: {shape: 'spline'},
+                type: 'scatter',
+                name:"I-15 Reliability"
+            };
+            trace2 = [];
+            trace2 = {
+                x:x,
+                y:z,
+                mode: 'lines+markers',
+                line: {shape: 'spline'},
+                type: 'scatter',
+                name:"Target"
+            };
+            data =[];
+            data = [trace1,trace2];
+            Plotly.newPlot('i15reliabilitygraph',data,layout);
+            //fetch and draw mode slit graph
+            fetch('https://dashboard.udot.utah.gov/resource/nc2g-cvvu.json')
+            .then(function(response){
+                return response.json();
+            }).then(function(j){
+                x = [];
+                y=[];
+                z = [];
+                for(var i = 0;i < j.length; i++){
+                    x.push(j[i]["year"]);
+                    y.push(parseInt(j[i]["auto_trips_state"]));
+                    z.push(parseInt(j[i]["transit_trips_state"]));
+                }
+                trace1 = [];
+                trace1 = {
+                    x:x,
+                    y:y,
+                    type: 'bar',
+                    name:"Auto Person Trips I-15"
+                };
+                trace2 = [];
+                trace2 = {
+                    x:x,
+                    y:z,
+                    type: 'bar',
+                    name:"Transit Person Trips I-15"
+                };
+                layout = [];
+                layout = {barmode: 'stack',xaxis: {type: 'category'},legend: {'orientation': 'h',y: -0.5,x:0.3}};
+                data =[];
+                data = [trace1,trace2];
+                Plotly.newPlot('modeSplit',data,layout);
+                //fetch and draw snow and ice carts
+                fetch('https://dashboard.udot.utah.gov/resource/mk2b-pz6f.json?$select=performance_1,whichwinter,performance_2,axislabel&$order=customsort')
+                .then(function(response){
+                    return response.json();
+                }).then(function(j){
+                    x = [];
+                    y=[];
+                    z = [];
+                    var values = new Array();
+                    var labels = new Array();
+                    for(var i = 0;i < j.length; i++){
+                        if(j[i]["whichwinter"] === "CURRENT OVERALL"){
+                            values.push(parseInt(j[i]["performance_1"]));
+                            labels.push(j[i]["performance_2"]);
+                        } else{
+                            x.push(threletterMonth(j[i]["axislabel"]));
+                            if(j[i]["whichwinter"] === "PREVIOUS WINTER"){
+                                z.push(0);
+                                y.push(parseFloat(j[i]["performance_1"]));
+                            }else if(j[i]["whichwinter"] === "CURRENT WINTER"){
+                                y.push(0);
+                                z.push(parseFloat(j[i]["performance_1"]));
+                            }
+                        }
+                    }
+                    trace1 = [];
+                    trace1 = {
+                        x:x,
+                        y:y,
+                        type: 'bar',
+                        name:"Previous Winter"
+                    };
+                    trace2 = [];
+                    trace2 = {
+                        x:x,
+                        y:z,
+                        type: 'bar',
+                        name:"Current Winter"
+                    };
+                    layout = [];
+                    layout = {xaxis: {type: 'category'},legend: {'orientation': 'h',y: -0.5,x:0.3}};
+                    data =[];
+                    data = [trace1,trace2];
+                    Plotly.newPlot('snowIceBar',data,layout);
+                    //Plat pie chart with label and value data
+                    data = [];
+                    data = [{
+                        values:values,
+                        labels:labels,
+                        type: 'pie'
+                    }];
+                    layout = [];
+                    layout = {height: 400, widht: 400,legend: {'orientation': 'h',y: -0.5,x:0.3}};
+                    Plotly.newPlot('snowIcePie',data,layout);
+                });
+            });
+        });
+    });
+}
+//Custom Function to extract three letter month from string
+function threletterMonth(str) {
+    var res = str.substring(0, 3)+" "+str.substring((str.length - 4) , str.length);
+    return res;
+}
