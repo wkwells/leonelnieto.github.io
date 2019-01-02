@@ -31,6 +31,9 @@ h6 {
   text-transform: uppercase;
   color: #343a40;
 }
+.text-transform-none {
+  text-transform: none;
+}
 
 .masthead {
   height: 100vh;
