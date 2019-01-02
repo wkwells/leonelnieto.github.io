@@ -338,7 +338,10 @@ function drawPICharts(){
             boxWidth: 80
           }
         },
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        scales:{
+          yAxes: [{display: true, ticks:{beginAtZero: true, steps: 10, stepValue: 5, max: 100}}]
+        },
       };
       new Chart(piLineChart, {
         type: 'line',
@@ -707,7 +710,10 @@ function drawZFCharts(){
             boxWidth: 80
           }
         },
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        scales:{
+          yAxes: [{display: true, ticks:{beginAtZero: true, steps: 10, stepValue: 5, max: 100}}]
+        },
       };
       new Chart(zfLineChart, {
         type: 'line',
@@ -738,7 +744,7 @@ function drawZFCharts(){
           data:kpiChartData,
           options: {
             scales: {
-              xAxes: [{ stacked: true,ticks:{fontSize:12} }],
+              xAxes: [{ stacked: true,ticks:{fontSize:8} }],
               yAxes: [{ stacked: true }]
             },
             responsive: true,
@@ -1047,7 +1053,10 @@ function drawOMCharts(){
             boxWidth: 80
           }
         },
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        scales:{
+          yAxes: [{display: true, ticks:{beginAtZero: true, steps: 10, stepValue: 5, max: 100}}]
+        },
       };
       new Chart(omLineChart, {
         type: 'line',
