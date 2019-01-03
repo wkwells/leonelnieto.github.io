@@ -194,7 +194,6 @@ function drawGoalCharts() {
         onComplete: function () {
                 var chartInstance = this.chart,
                 ctx = chartInstance.ctx;
-
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'bottom';
                 this.data.datasets.forEach(function(dataset, i) {
@@ -208,11 +207,7 @@ function drawGoalCharts() {
             }
       },
         legend: {
-          display: false,
-          position: 'top',
-          labels: {
-            boxWidth: 80
-          }
+          display: false
         },
         scales:{
           yAxes: [{display: true, ticks:{beginAtZero: true, steps: 10, stepValue: 5, max: 100}}]
@@ -1029,9 +1024,10 @@ function drawOMCharts(){
       var piData = [];
       var years = [];
       for(var i = 0; i < j.length; i++){
-          piData.push(parseFloat(j[i]["avg_mobility"]).toFixed(2));
+          piData.push(parseInt(j[i]["avg_mobility"]));
           years.push(j[i]["year"]);
       }
+      Chart.defaults.global.defaultFontColor = '#000';
       var omLineChart = document.getElementById("om-line-chart");
       Chart.defaults.global.defaultFontFamily = "proxima-nova, sans-serif";
       Chart.defaults.global.defaultFontSize = 14;
@@ -1040,23 +1036,40 @@ function drawOMCharts(){
         datasets: [{
           label: "Mobility Index",
           data: piData,
-          borderColor: "#5a87c5"
+          borderColor: "#5a87c5",
+          fill:false,
+          backgroundColor: "#000"
         }]
       };
       var chartOptions = {
         responsive: true,
-        animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+        animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc',
+        onComplete: function () {
+                var chartInstance = this.chart,
+                ctx = chartInstance.ctx;
+
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                this.data.datasets.forEach(function(dataset, i) {
+                var meta = chartInstance.controller.getDatasetMeta(i);
+                meta.data.forEach(function(bar, index) {
+                  var data = dataset.data[index];
+                  ctx.fillText(data, bar._model.x, bar._model.y +20);
+                });
+              });
+
+            }
+        },
         legend: {
-          display: false,
-          position: 'top',
-          labels: {
-            boxWidth: 80
-          }
+          display: false
         },
         maintainAspectRatio: false,
         scales:{
           yAxes: [{display: true, ticks:{beginAtZero: true, steps: 10, stepValue: 5, max: 100}}]
         },
+        tooltips: {
+          enabled: false
+        }
       };
       new Chart(omLineChart, {
         type: 'line',
@@ -1087,12 +1100,19 @@ function drawOMCharts(){
           data:kpiChartData,
           options: {
             scales: {
-              xAxes: [{ stacked: true }],
+              xAxes: [{ stacked: true,ticks:{fontSize:10} }],
               yAxes: [{ stacked: true }]
             },
             responsive: true,
             animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            legend: {
+              display: true,
+              position: 'bottom',
+              labels: {
+                boxWidth: 20
+              }
+            },
           }
         });
       }).catch(function(err){
@@ -1116,7 +1136,7 @@ function optimizeMobilityCharts(){
         var y = new Array(); //This will house data but will be reset after each loop
         var z = new Array();
         for(var i = 0;i < j.length; i++){
-            x.push(j[i]["date"]);
+            x.push(dateBreaker(j[i]["date"]));
             y.push(parseInt(j[i]["i_15_delay"]));
             z.push(parseInt(j[i]["total"]));
         }
@@ -1152,7 +1172,7 @@ function optimizeMobilityCharts(){
             y=[];
             z = [];
             for(var i = 0;i < j.length; i++){
-                x.push(j[i]["season"]);
+                x.push(dateBreaker(j[i]["season"]));
                 y.push(parseInt(j[i]["reliability_score"]));
                 z.push(parseInt(j[i]["target"]));
             }
@@ -1272,4 +1292,16 @@ function optimizeMobilityCharts(){
 function threletterMonth(str) {
     var res = str.substring(0, 3)+" "+str.substring((str.length - 4) , str.length);
     return res;
+}
+//Helper functtion dateBreaker (recieved a date string and breaks it into yy-mm m)
+function dateBreaker(datestring) {
+  var d = new Date(datestring);
+  var n = d.getMonth() +1;
+  if(n<10){
+  	n = "0"+n;
+  }
+  var year = d.getFullYear();
+  year = year.toString().substr(-2);
+  var month = d.toLocaleString('en-us', { month: 'short' });
+  return year+"-"+n+" "+month;
 }
