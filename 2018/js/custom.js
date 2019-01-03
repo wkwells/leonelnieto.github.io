@@ -480,7 +480,7 @@ function bridgeConditionChart(){
 }
 //Operational ATMS charts
 function atmsOperationalChart(){
-    fetch("https://dashboard.udot.utah.gov/resource/twwa-kcr4.json?$order=year")
+    fetch("https://dashboard.udot.utah.gov/resource/59ex-6nx9.json?$order=year")
         .then(function(response){
             return response.json();
     }).then(function(j){
