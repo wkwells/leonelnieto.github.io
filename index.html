@@ -195,7 +195,7 @@
                       <h5 class="card-title text-dak">Transportation Technology</h5>
                     </div>
                   </div>
-                  <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal fade bd-example-modal-lg-1" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -217,6 +217,10 @@
                               </div>
                             </div>
                           </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" onclick="modalNext(1,2)">Next</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                         </div>
                         </div>
                       </div>
                     </div>
@@ -228,7 +232,7 @@
                       <h5 class="card-title text-dak">Unmaned Aerial Vehicles</h5>
                     </div>
                   </div>
-                  <div class="modal fade bd-example-modal-lg-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal fade bd-example-modal-lg-2" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -246,6 +250,11 @@
                               </div>
                             </div>
                           </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-prev" onclick="modalNext(2,1)">Prev</button>
+                            <button type="button" class="btn btn-default btn-next" onclick="modalNext(2,3)">Next</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                         </div>
                         </div>
                       </div>
                     </div>
@@ -259,7 +268,7 @@
                       <h5 class="card-title text-dak">Legislative Update</h5>
                     </div>
                   </div>
-                  <div class="modal fade bd-example-modal-lg-3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal fade bd-example-modal-lg-3" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -276,6 +285,11 @@
                               </div>
                             </div>
                           </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-prev" onclick="modalNext(3,2)">Prev</button>
+                            <button type="button" class="btn btn-default btn-next" onclick="modalNext(3,4)">Next</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                         </div>
                         </div>
                       </div>
                     </div>
@@ -287,7 +301,7 @@
                       <h5 class="card-title text-dak">Incident Management Team</h5>
                     </div>
                   </div>
-                  <div class="modal fade bd-example-modal-lg-4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal fade bd-example-modal-lg-4" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -304,6 +318,10 @@
                               </div>
                             </div>
                           </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-prev" onclick="modalNext(4,3);">Prev</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                         </div>
                         </div>
                       </div>
                     </div>
@@ -1046,13 +1064,17 @@
     <script src="js/udotsd.min.js"></script>
     <script src="js/sdcharts.js"></script>
     <script>
-    drawGoalCharts();
+      drawGoalCharts();
       var waypoint = new Waypoint({
           element: document.getElementById('strategicGoals'),
           handler: function(direction) {
             drawGoalCharts();
           }
-        })
+        });
+        function modalNext(current,next){
+          $("#myModal"+current).modal('hide');
+          $("#myModal"+next).modal('show');
+        }
     </script>
   </body>
 

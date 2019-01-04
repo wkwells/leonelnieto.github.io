@@ -463,9 +463,12 @@ function pavementPlotlyChart2(){
 		              legend: {"orientation": "h"},
                 y: -0.5,
                 x:0.3
-            }
+            },
+            xaxis: {
+              autotick: false,tickfont: {size: 10},
+            },
         };
-        Plotly.newPlot('pavementPlotlyChart',data,layout);
+        Plotly.newPlot('pavementPlotlyChart',data,layout,{responsive: true});
     });
 }
 //Bridge Plotly Charts
@@ -501,9 +504,12 @@ function bridgeConditionChart(){
                     y1:85,
                     line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
                 }],
-                yaxis: {range: [50, 100]}
+                yaxis: {range: [50, 100]},
+                xaxis: {
+                  autotick: false,tickfont: {size: 10},
+                },
               };
-        Plotly.newPlot('nhsBridgeCondition',data,layout);
+        Plotly.newPlot('nhsBridgeCondition',data,layout,{responsive: true});
         y = [];
         for(var i = 0;i < j.length; i++){
             y.push(parseFloat(j[i]["state_inv_avg"]));
@@ -530,8 +536,9 @@ function bridgeConditionChart(){
                     x1:1,
                     y1:80,
                     line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
-                }],yaxis: {range: [50, 100]}};
-        Plotly.newPlot('stateBridgeCondition',data,layout);
+                }],yaxis: {range: [50, 100]},xaxis: {autotick: false,tickfont: {size: 10}}
+              };
+        Plotly.newPlot('stateBridgeCondition',data,layout,{responsive: true});
         y = [];
         for(var i = 0;i < j.length; i++){
             y.push(parseFloat(j[i]["loc_combined_avg"]));
@@ -558,13 +565,13 @@ function bridgeConditionChart(){
                     x1:1,
                     y1:75,
                     line:{color:'rgb(255,0,0)',wdith:4,dash:'dot'}
-                }],yaxis: {range: [50, 100]}};
-        Plotly.newPlot('lgBridgeCondition',data,layout);
+                }],yaxis: {range: [50, 100]},xaxis: {autotick: false,tickfont: {size: 10}}};
+        Plotly.newPlot('lgBridgeCondition',data,layout,{responsive: true});
     });
 }
 //Operational ATMS charts
 function atmsOperationalChart(){
-    fetch("https://dashboard.udot.utah.gov/resource/twwa-kcr4.json?$order=year")
+    fetch("https://dashboard.udot.utah.gov/resource/59ex-6nx9.json?$order=year")
         .then(function(response){
             return response.json();
     }).then(function(j){
@@ -589,8 +596,8 @@ function atmsOperationalChart(){
                 'orientation': 'h',
                 y: -0.5,
                 x:0.3
-            }};
-        Plotly.newPlot('atmsOperationalChart',data,layout);
+            },xaxis: {autotick: false,tickfont: {size: 10}}};
+        Plotly.newPlot('atmsOperationalChart',data,layout,{responsive:true});
     });
 }
 //Signal Condition Bart Stacked Chart
@@ -649,9 +656,9 @@ function signalsPlotlyChart(){
                 'orientation': 'h',
                 y: -0.5,
                 x:0.3
-            }
+            },xaxis: {autotick: false,tickfont: {size: 10}}
         };
-        Plotly.newPlot('signalsPlotlyChart',data,layout);
+        Plotly.newPlot('signalsPlotlyChart',data,layout,{responsive:true});
     });
 }
 //Chart for individual goal pages
@@ -700,7 +707,7 @@ function drawZFCharts(){
       var piData = [];
       var years = [];
       for(var i = 0; i < j.length; i++){
-          piData.push(parseFloat(j[i]["avg_safety"]).toFixed(2));
+          piData.push(parseInt(j[i]["avg_safety"]));
           years.push(j[i]["year"]);
       }
       var zfLineChart = document.getElementById("zf-line-chart");
@@ -711,18 +718,31 @@ function drawZFCharts(){
         datasets: [{
           label: "Safety Index",
           data: piData,
-          borderColor: "#5a87c5"
+          borderColor: "#5a87c5",
+          fill:false,
+          backgroundColor: "#000"
         }]
       };
       var chartOptions = {
         responsive: true,
-        animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+        animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc',
+        onComplete: function () {
+                var chartInstance = this.chart,
+                ctx = chartInstance.ctx;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                this.data.datasets.forEach(function(dataset, i) {
+                var meta = chartInstance.controller.getDatasetMeta(i);
+                meta.data.forEach(function(bar, index) {
+                  var data = dataset.data[index];
+                  ctx.fillText(data, bar._model.x, bar._model.y +20);
+                });
+              });
+
+            }
+        },
         legend: {
-          display: false,
-          position: 'top',
-          labels: {
-            boxWidth: 80
-          }
+          display: false
         },
         maintainAspectRatio: false,
         scales:{
@@ -758,12 +778,18 @@ function drawZFCharts(){
           data:kpiChartData,
           options: {
             scales: {
-              xAxes: [{ stacked: true,ticks:{fontSize:8} }],
+              xAxes: [{ stacked: true,ticks:{fontSize:9} }],
               yAxes: [{ stacked: true }]
             },
             responsive: true,
             animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            legend: {
+              position: 'bottom',
+              labels: {
+                boxWidth: 20
+              }
+            },
           }
         });
       }).catch(function(err){
@@ -818,21 +844,13 @@ function zeroFatalitiesPM(region){
             type: 'scatter',
             line:{shape:'spline'}
         };
-//        var forecast = {
-//            x:[2018,2019,2020],//xbr = Year
-//            y:[forecastYear(2018,fat,x),forecastYear(2019,fat,x),forecastYear(2020,fat,x)], //yvar =data
-//            mode: "lines+markers",
-//            name:"Linear Forecast",
-//            type: 'scatter',
-//            line:{shape:'spline'}
-//        };
         var data = [actual,target];
         var layout = {
             legend: {
                 'orientation': 'h',
                 y: -0.5,
                 x:0.3
-            }};
+            },xaxis: {autotick: false,tickfont:{size:10,family:'proxima-nova, sans-serif'}}};
         Plotly.newPlot('trafficFatalities',data,layout);
         actual = [];
         actual = {
@@ -852,15 +870,6 @@ function zeroFatalitiesPM(region){
             type: 'scatter',
             line:{shape:'spline'}
         };
-//        forecast = [];
-//        forecast = {
-//            x:[2018,2019,2020],//xbr = Year
-//            y:[forecastYear(2018,inj,x),forecastYear(2019,inj,x),forecastYear(2020,inj,x)], //yvar =data
-//            mode: "lines+markers",
-//            name:"Linear Forecast",
-//            type: 'scatter',
-//            line:{shape:'spline'}
-//        };
         data = [];
         data = [actual,target];
         Plotly.newPlot('trafficInjuries',data,layout);
@@ -883,15 +892,6 @@ function zeroFatalitiesPM(region){
             type: 'scatter',
             line:{shape:'spline'}
         };
-//        forecast = [];
-//        forecast = {
-//            x:[2018,2019,2020],//xbr = Year
-//            y:[forecastYear(2018,cra,x),forecastYear(2019,cra,x),forecastYear(2020,cra,x)], //yvar =data
-//            mode: "lines+markers",
-//            name:"Linear Forecast",
-//            type: 'scatter',
-//            line:{shape:'spline'}
-//        };
         data = [];
         data = [actual,target];
         Plotly.newPlot('trafficCrashes',data,layout);
@@ -922,7 +922,7 @@ function zeroFatalitiesPM(region){
                     'orientation': 'h',
                     y: -0.5,
                     x:0.3
-                },yaxis: {range: [0, 10]}};
+                },yaxis: {range: [0, 10]},xaxis: {autotick: false,tickfont:{size:10,family:'proxima-nova, sans-serif'}}};
             Plotly.newPlot('internalFatalities',data,layout);
             //refetch different query and hope that it works and plot internal injuries and equipment damage
             var url = 'https://dashboard.udot.utah.gov/resource/jvx4-hyvf.json';
@@ -962,7 +962,7 @@ function zeroFatalitiesPM(region){
                 };
                 layout = [];
                 layout = {
-                    xaxis:{type:'category'},
+                    xaxis:{type:'category',autotick: false,tickfont:{size:10,family:'proxima-nova, sans-serif'}},
                     legend: {
                         'orientation': 'h',
                         y: -0.5,

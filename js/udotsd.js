@@ -26,3 +26,6 @@
   });
 
 })(jQuery); // End of use strict
+
+//function to slide through modals
+
