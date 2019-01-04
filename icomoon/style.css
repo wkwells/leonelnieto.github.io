@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?4r9sak');
-  src:  url('fonts/icomoon.eot?4r9sak#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?4r9sak') format('truetype'),
-    url('fonts/icomoon.woff?4r9sak') format('woff'),
-    url('fonts/icomoon.svg?4r9sak#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?fj9gr5');
+  src:  url('fonts/icomoon.eot?fj9gr5#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?fj9gr5') format('truetype'),
+    url('fonts/icomoon.woff?fj9gr5') format('woff'),
+    url('fonts/icomoon.svg?fj9gr5#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,33 +24,42 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-UDOT:before {
+.icon-funding:before {
   content: "\e900";
 }
-.icon-funding:before {
-  content: "\e922";
-}
 .icon-goal:before {
-  content: "\e901";
+  content: "\e918";
 }
 .icon-Home:before {
-  content: "\e902";
+  content: "\e919";
 }
 .icon-local-bridge:before {
-  content: "\e903";
+  content: "\e91a";
 }
 .icon-NHS-bridge:before {
-  content: "\e904";
+  content: "\e91b";
 }
-.icon-Program-briefing:before {
-  content: "\e907";
+.icon-mobility:before {
+  content: "\e91c";
+}
+.icon-infrastructure:before {
+  content: "\e91d";
+}
+.icon-program-briefing:before {
+  content: "\e91e";
 }
 .icon-Program:before {
-  content: "\e908";
+  content: "\e91f";
 }
 .icon-Tactical:before {
-  content: "\e909";
+  content: "\e920";
+}
+.icon-UDOT:before {
+  content: "\e921";
 }
 .icon-Utah-bridge:before {
-  content: "\e91f";
+  content: "\e922";
+}
+.icon-zero-fatalities:before {
+  content: "\e923";
 }
