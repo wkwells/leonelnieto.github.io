@@ -11,6 +11,8 @@
     <!-- Custom fonts for this template -->
     <link rel="stylesheet" href="https://use.typekit.net/wls4dcr.css">
     <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+    <!-- Morris Charts css  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <!-- Custom styles for this template -->
     <link href="css/udotsd.css" rel="stylesheet">
     <link rel="stylesheet" href="icomoon/style.css">
@@ -151,7 +153,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">
+                <a class="nav-link" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false" onclick="setTimeout(incidentManagement,1000)">
                   <h4 class="text-transform-none py-4 text-primary">Efficient Operations</h4>
                   <div class="slide-me-up"><div class="slide-me-text">Efficient operations</div></div>
                 </a>
@@ -210,12 +212,8 @@
                         <img class="card-img-top" src="img/Public Messages.jpg" alt="">
                         <div class="card-body p-1">
                             <h4 class="card-title text-center">Public Information</h4>
-                            <p class="text-left">Informing the Public of potential impacts and delays, as well as sharing safety messages.</p>
-                            <ul style="list-style:square inside" class="text-left">
-                                  <li>Efficient use of overhead signs, also known as Variable Message Signs, to inform drivers of expected travel times, upcoming construction, weather conditions, and other safety messages.</li>
-                                  <li>Social Media: UDOT uses Facebook, Twitter, Instagram and YouTube to inform the traveling public of accidents, closures, and upcoming projects.</li>
-                                  <li>UDOT Traffic website and phone app public can visit this website or phone app to access more information about traffic conditions, accidents, construction activities, and more.</li>
-                            </ul>
+                            <p class="text-left">UDOT employs several tactics to inform the public of roadway construction, incidents, and other important safety information. We use variable message signs (VMS) informing drivers of expected travel times, weather conditions, and safety messages to remind travelers of our goal to reach Zero Fatalities on our roadways.</p>
+                            <p class="text-left">For updates and stories of how UDOT is keeping Utah moving, connect with us on social media <a href="https://www.facebook.com/utahdot">Facebook</a>, <a href="https://twitter.com/utahdot">Twitter</a>, <a href="https://www.instagram.com/utahtransportation/">Instagram</a>, or <a href="http://www.youtube.com/UtahDOT">YouTube</a> for updates and stories. Travelers can also get up-to-date roadway information by downloading the UDOT Traffic app featuring a statewide map of current traffic conditions, traffic camera images, and road weather forecasts. </p>
                         </div>
                         <div class="card-footer px-0">
                           <a href="https://udottraffic.utah.gov/" class="btn btn-primary">UDOT Traffic Website</a>
@@ -228,11 +226,8 @@
                         <img class="card-img-top" src="img/Signal optimization.jpg" alt="Traffic Signals">
                         <div class="card-body p-1">
                             <h4 class="card-title text-center">Signal Optimization</h4>
-                            <ul style="list-style:square inside" class="text-left">
-                                  <li>Connected traffic signal system: Utah is a leader in that 88 percent of the signals in the entire state are connected to one shared system managed at UDOT’s Traffic Operations Center (TOC). allowing us to be more responsive and a more optimized traffic system</li>
-                                  <li>Adaptive signal control plans: Using a new capability in traffic signal controllers, UDOT engineers developed adaptive signals to adjust cycle length times to accommodate motorist and pedestrian traffic.</li>
-                                  <li>Comprehensive Incident Management: The Incident Management Program’s goal is to increase first responder safety, improve reliability, and reduce delay and secondary crashes. Activities include assisting stranded motorists, removing debris and providing traffic control at crash scenes. The chart to the right highlights the activities our incident management team does to safely clear roads and optimize mobility.</li>
-                            </ul>
+                            <p class="text-left">Utah is leader in the nation when it comes to signal optimization. More than 95 percent of signals in the entire state are connected to one shared system managed at UDOT’s Traffic Operations Center (TOC).This enables our engineers to develop adaptive signals to adjust cycle length times to accommodate motorist and pedestrian traffic. We are also able to reduce stops, delays, gasoline consumption and air pollution by up to 25 percent by synchronizing traffic lights. 
+                            </p>
                             <h6 class="text-center card-title">Activities Performed by Incident Management Team</h6>
                             <div id="incidentManagement" class="card-img-bottom" style="height: 250px;"></div>
                         </div>
@@ -246,14 +241,8 @@
                         <img class="card-img-top" src="img/Snow Removal.jpg" alt="">
                         <div class="card-body p-1">
                             <h4 class="card-title text-center">Snow Removal</h4>
-                            <p class="text-left">When winter storms occur, the public, businesses, and the economy are dependent on clear roads to safely travel to their destinations. We operate a fleet of more than 500 snowplows to manage an average of 25 winter storms and remove more than 65 million tons of snow and ice on Utah’s roads. UDOT continues to make the snow and ice removal process more efficient by:</p>
-                            <ul style="list-style:square inside" class="text-left">
-                                  <li>Using technology such as the Road Weather Information Systems to assess conditions and strategically deploy plows</li>
-                                  <li>Saving more than 20,000 gallons of diesel fuel per year by training drivers on proper acceleration, deceleration, idle reduction and travel speeds using a snowplow simulator</li>
-                                  <li>Applying brine before storms and using salt more efficiently</li>
-                                  <li>Using equipment such as wing plows and tow plows that allow greater efficiency</li>
-                                  <li>Pre-wetting the salt with a brine or other liquid to kick start the melting process saving the department 18,000 tons of salt annually</li>
-                            </ul>
+                            <p class="text-left">Here in Utah, we’re known for the greatest snow on earth. When winter storms occur, the public, businesses, and the economy are dependent on clear roads to safely travel to their destinations. We operate a fleet of more than 500 snow plows to remove more than 65 million tons of snow and ice on Utah’s roads every year.</p>
+                            <p class="text-left">UDOT also harnesses Road Weather Information Systems (RWIS), a technology that allows us assess conditions such as road temperature, wind speed, and visibility. This improves our ability to inform the public of potentially hazardous roadways conditions and strategically deploy snow plows and apply salt brines to roads.</p>
                         </div>
                         <div class="card-footer px-0">
                           <a href="http://udottraffic.utah.gov/RoadWeatherForecast.aspx" class="btn btn-primary">Road Weather Information</a>
@@ -374,6 +363,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <!--Plotly Charts cdn -->
     <script src="https://cdn.plot.ly/plotly-1.2.0.min.js"></script>
+    <!-- Plugin Morris chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!-- Custom scripts for this template -->
     <script src="js/udotsd.min.js"></script>
     <script src="js/sdcharts.js"></script>

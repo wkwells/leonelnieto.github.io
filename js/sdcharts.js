@@ -320,18 +320,32 @@ function drawPICharts(){
         datasets: [{
           label: "Infrastructure Index",
           data: piData,
-          borderColor: "#5a87c5"
+          borderColor: "#5a87c5",
+          fill:false,
+          backgroundColor: "#000"
         }]
       };
       var chartOptions = {
         responsive: true,
-        animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
+        animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc',
+        onComplete: function () {
+                var chartInstance = this.chart,
+                ctx = chartInstance.ctx;
+
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                this.data.datasets.forEach(function(dataset, i) {
+                var meta = chartInstance.controller.getDatasetMeta(i);
+                meta.data.forEach(function(bar, index) {
+                  var data = dataset.data[index];
+                  ctx.fillText(data, bar._model.x, bar._model.y +20);
+                });
+              });
+
+            }
+        },
         legend: {
-          display: false,
-          position: 'top',
-          labels: {
-            boxWidth: 80
-          }
+          display: false
         },
         maintainAspectRatio: false,
         scales:{
@@ -341,8 +355,7 @@ function drawPICharts(){
       new Chart(piLineChart, {
         type: 'line',
         data: linechartData,
-        options: chartOptions,
-
+        options: chartOptions
       });
       //Third fetch for stacked KPI Charts charts
       url = "https://dashboard.udot.utah.gov/resource/rqv9-ry2j.json?$select=pavement,bridges,atms,signals&entity=Statewide";
@@ -373,7 +386,13 @@ function drawPICharts(){
             },
             responsive: true,
             animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            legend: {
+              position: 'bottom',
+              labels: {
+                boxWidth: 20
+              }
+            },
           }
         });
       }).catch(function(err){
@@ -1287,6 +1306,30 @@ function optimizeMobilityCharts(){
             });
         });
     });
+}
+//Morris chart for optimize mobility incident management
+function incidentManagement() {
+  //Possible alternative api https://dashboard.udot.utah.gov/resource/p9qp-qyqk.json
+  fetch('https://dashboard.udot.utah.gov/resource/j4uf-jvxd.json')
+  .then(function(response){
+      return response.json();
+  }).then(function(j){
+    var total = 0;
+    for(var i=0; i<j.length; i++){
+      total += parseInt(j[i]["incidents"]);
+    }
+      Morris.Donut({
+          element: 'incidentManagement',
+          data: [
+            {label: "Motor assists", value: parseInt(j[0]["incidents"])},
+            {label: "Crash assists", value: parseInt(j[1]["incidents"])},
+            {label: "Debris removal", value: parseInt(j[2]["incidents"])},
+            {label: "Abandoned vehicles", value: parseInt(j[3]["incidents"])},
+            {label: "Other assists", value: parseInt(j[4]["incidents"])}
+          ],
+          formatter: function (y) { return y+" : "+Math.round((y/total)*100)+"%"}
+      });
+  });
 }
 //Custom Function to extract three letter month from string
 function threletterMonth(str) {
