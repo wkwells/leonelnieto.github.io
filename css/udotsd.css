@@ -5,7 +5,7 @@
  */
 
 body {
-  padding-top: 54px;
+  padding-top: 40px;
   color: #868e96;
   font-family: proxima-nova, sans-serif;
   font-weight: 400;
@@ -436,7 +436,7 @@ text-align: right;
 /*Scroll Arrow Styles*/
 .scrollArrow {
   position: absolute;
-  bottom: 0px;
+  bottom: -20px;
   left: 50%;
   z-index: 2;
   display: inline-block;
@@ -453,7 +453,7 @@ text-align: right;
   text-decoration: none;
 }
 .scrollArrow {
-  padding-top: 60px;
+  padding-top: 50px;
 }
 .scrollArrow span {
   position: absolute;
@@ -803,4 +803,7 @@ transition-delay:.2s;
   top: 1.5em;
   left: 3em;
   z-index: 2000;
+}
+.font1rem {
+  font-size: 1rem;
 }

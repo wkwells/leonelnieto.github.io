@@ -309,7 +309,7 @@ function drawPICharts(){
       var piData = [];
       var years = [];
       for(var i = 0; i < j.length; i++){
-          piData.push(parseFloat(j[i]["avg_infrastructure"]).toFixed(2));
+          piData.push(parseInt(j[i]["avg_infrastructure"]));
           years.push(j[i]["year"]);
       }
       var piLineChart = document.getElementById("pi-line-chart");
