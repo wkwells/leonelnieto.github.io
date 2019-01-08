@@ -97,7 +97,7 @@
           <div class="container h-100">
             <div class="d-flex text-center h-100">
               <div class="my-auto w-100 text-white">
-                <h1 class="display-3">2019 UDOT Strategic Direction</h1>
+                <h1 class="display-3 text-white">2019 UDOT Strategic Direction</h1>
               </div>
             </div>
           </div>
@@ -331,7 +331,13 @@
             <div class="col-lg-6">
               <div class="card no-border">
                 <div class="card-body p-0">
-                  <img class="card-img" src="img/sd-infographic.png">
+                  <img class="card-img" src="img/sd-infographic.png" usemap="#image-map">
+                  <map name="image-map">
+                      <area alt="" title="Region 1" href="" coords="74,136,221,196" shape="rect">
+                      <area alt="" title="Region 2" href="" coords="71,216,163,292" shape="rect">
+                      <area alt="" title="Region 3" href="" coords="224,248,367,296" shape="rect">
+                      <area alt="" title="Region 4" href="" coords="67,343,373,532" shape="0">
+                  </map>
                 </div>
               </div>
             </div>
@@ -358,7 +364,7 @@
             <div class="col-md-4">
               <div class="card text-center udot-bg-2 no-border">
                 <div class="card-body">
-                  <h5 class="card-title font-weight-bold alt-link" onclick="window.location='zero-fatalities.html'">Zero Fatalities</h5>
+                  <h5 class="card-title font-weight-bold alt-link flapjack" onclick="window.location='zero-fatalities.html'">Zero Fatalities</h5>
                   <canvas id="zero-fatalities-doughut-chart"></canvas>
                   <h6 class="card-header m-1 no-border">Historic Safety Index</h6>
                   <canvas id="zero-fatalities-line-chart"></canvas>
@@ -368,7 +374,7 @@
             <div class="col-md-4">
               <div class="card text-center udot-bg-2 no-border">
                 <div class="card-body">
-                  <h5 class="card-title font-weight-bold alt-link" onclick="window.location='optimize-mobility.html'">Optimize Mobility</h5>
+                  <h5 class="card-title font-weight-bold alt-link flapjack" onclick="window.location='optimize-mobility.html'">Optimize Mobility</h5>
                   <canvas id="optimize-mobility-doughut-chart"></canvas>
                   <h6 class="card-header m-1 no-border">Historic Mobility Index</h6>
                   <canvas id="optimize-mobility-line-chart"></canvas>
@@ -378,7 +384,7 @@
             <div class="col-md-4">
               <div class="card text-center udot-bg-2 no-border">
                 <div class="card-body">
-                  <h5 class="card-title font-weight-bold alt-link" onclick="window.location='preserve-infrastructure.html'">Preserve Infrastructure</h5>
+                  <h5 class="card-title font-weight-bold alt-link flapjack" onclick="window.location='preserve-infrastructure.html'">Preserve Infrastructure</h5>
                   <canvas id="preserve-infrastructure-doughut-chart"></canvas>
                   <h6 class="card-header m-1 no-border">Historic Safety Index</h6>
                   <canvas id="preserve-infrastructure-line-chart"></canvas>
@@ -409,39 +415,39 @@
                 <div class="card-body" id="ul-tabs">
                   <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link" id="pills-tif-tab" data-toggle="pill" href="#pills-tif" role="tab" aria-controls="pills-tif" aria-selected="false">
-                        <h4 class="h-25 font-weight-bold text-transform-none">Transportation <br />Investment Fund</h4>
+                      <a class="nav-link active show" id="pills-tif-tab" data-toggle="pill" href="#pills-tif" role="tab" aria-controls="pills-tif" aria-selected="false">
+                        <h4 class="h-25 font-weight-bold text-transform-none flapjack-white text-orange">Transportation <br />Investment Fund</h4>
                         <h2 class="fundingPercent text-white">42%</h2>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="pills-tf-tab" data-toggle="pill" href="#pills-tf" role="tab" aria-controls="pills-tf" aria-selected="false">
-                        <h4 class="h-25 font-weight-bold text-transform-none">Transportation <br />Fund</h4>
+                        <h4 class="h-25 font-weight-bold text-transform-none flapjack-white text-orange">Transportation <br />Fund</h4>
                         <h2 class="fundingPercent text-white">35%</h2>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="pills-hff-tab" data-toggle="pill" href="#pills-hff" role="tab" aria-controls="pills-hff" aria-selected="false">
-                        <h4 class="h-25 font-weight-bold text-transform-none">Highway Federal <br />Funds</h4>
+                        <h4 class="h-25 font-weight-bold text-transform-none flapjack-white text-orange">Highway Federal <br />Funds</h4>
                         <h2 class="fundingPercent text-white">22%</h2>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="pills-rural-tab" data-toggle="pill" href="#pills-rural" role="tab" aria-controls="pills-rural" aria-selected="false">
-                        <h4 class="h-25 font-weight-bold text-transform-none">Rural Transit<br />&nbsp;</h4>
+                        <h4 class="h-25 font-weight-bold text-transform-none flapjack-white text-orange">Rural Transit<br />&nbsp;</h4>
                         <h2 class="fundingPercent text-white">&#60;1%</h2>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="pills-aero-tab" data-toggle="pill" href="#pills-aero" role="tab" aria-controls="pills-aero" aria-selected="false">
-                        <h4 class="h-25 font-weight-bold text-transform-none">Aeronatics<br />&nbsp;</h4>
+                        <h4 class="h-25 font-weight-bold text-transform-none flapjack-white text-orange">Aeronatics<br />&nbsp;</h4>
                         <h2 class="fundingPercent text-white">&#60;1%</h2>
                       </a>
                     </li>
                   </ul>
                   <div class="tab-content" id="pills-tabContent">
                     <!-- Tab Two with TIF Data -->
-                    <div class="tab-pane fade" id="pills-tif" role="tabpanel" aria-labelledby="pills-tif-tab">
+                    <div class="tab-pane fade show active" id="pills-tif" role="tabpanel" aria-labelledby="pills-tif-tab">
                       <div class="row">
                         <div class="col-12">
                           <nav>
@@ -756,41 +762,41 @@
           <!--Row in Program Briefing -->
           <div class="row">
             <div class="col-md-4">
-              <div class="card udot-bg-4 no-border">
-                <div class="card-body position-relative pb-card">
+              <div class="card udot-bg-4 no-border h-100">
+                <div class="card-body position-relative pb-card text-center">
                   <div class="content-overlay"></div>
-                  <img class="card-img-top p-5" src="img/Planning.png" alt="Planning Logo">
-                  <h3 class="card-title text-center text-white">Program and Process</h3>
+                  <span class="icon-planning pb-icon text-orange"></span>
+                  <!--<img class="card-img-top-small" src="img/Planning.png" alt="Planning Logo">-->
+                  <h3 class="card-title text-center text-white">TIF &amp; Planning</h3>
                   <div class="content-details fadeIn-bottom">
-                    <h3 class="content-title">Title Here</h3>
-                    <p class="content-text">Details paragraph here</p>
+                    <p class="content-text">View an interactive map of our projects funded by the Transportation Investment Fund (TIF). Statewide priorities and unified plan projects are also available to explore.</p>
+                    <button type="button" class="btn btn-light" onclick="window.location.href='http://uplan.maps.arcgis.com/apps/MapSeries/index.html?appid=e4c059b700554780a7de0f081c6a94ae'">TIF &amp; Planning App</button>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="card udot-bg-4 no-border">
-                <div class="card-body position-relative pb-card">
+              <div class="card udot-bg-4 no-border h-100">
+                <div class="card-body position-relative pb-card text-center">
                   <div class="content-overlay"></div>
-                  <img class="card-img-top p-5" src="img/Program and Process.png" alt="Program and Process">
-                  <h3 class="card-title text-center text-white">Program and Process</h3>
+                  <span class="icon-program-process pb-icon text-orange"></span>
+                  <h3 class="card-title text-center text-white">Program &amp; Process</h3>
                   <div class="content-details fadeIn-bottom">
-                    <h3 class="content-title">Title Here</h3>
-                    <p class="content-text">Details paragraph here</p>
-                    <button type="button" class="btn btn-light">Program and Process App</button>
+                    <p class="content-text">Learn how UDOT programs our Statewide Transportation Improvement Program. </p>
+                    <button type="button" class="btn btn-light" onclick="window.location.href='https://uplan.maps.arcgis.com/apps/MapSeries/index.html?appid=4dcc95bbd3bc488e84348b45d84ab66c'">Program &amp; Process App</button>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="card udot-bg-4 no-border">
-                <div class="card-body position-relative pb-card">
+              <div class="card udot-bg-4 no-border h-100">
+                <div class="card-body position-relative pb-card text-center">
                   <div class="content-overlay"></div>
-                  <img class="card-img-top p-5" src="img/Projects.png" alt="Projects">
+                  <span class="icon-human-working pb-icon text-orange"></span>
                   <h3 class="card-title text-center text-white">Projects</h3>
                   <div class="content-details fadeIn-bottom">
-                    <h3 class="content-title">Title Here</h3>
-                    <p class="content-text">Details paragraph here</p>
+                    <p class="content-text">Take a closer look at our current and upcoming projects to improve and maintain our transportation system to keep Utah Moving.</p>
+                    <button type="button" class="btn btn-light" onclick="window.location.href='https://uplan.maps.arcgis.com/apps/MapSeries/index.html?appid=9919c61b607849d9a6192de6f3271b14'">Projects Application</button>
                   </div>
                 </div>
               </div>
@@ -988,7 +994,6 @@
                 </div>
             </div>
         </div>
-        <a class="scrollArrow js-scroll-trigger" href="#tacticalMeasuresSuplement"><span></span>Scroll</a>
       </section>
       <!--Section on Suplemenatal tactical measures -->
       <section class="udto-sd-section p-3 p-lg-5 d-flex flex-column" id="tacticalMeasuresSuplement">

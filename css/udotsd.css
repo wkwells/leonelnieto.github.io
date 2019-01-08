@@ -50,7 +50,13 @@ h6 {
   font-size: 5em;
 }
 #stateheader div {
-  z-index: 1;
+  z-index: 100;
+}
+.zf-bg-img {
+  background-image: url('../img/zero-fatalities-masthead.jpg') !important;    
+}
+.om-bg-img {
+  background-image: url('../img/optimize-mobility-background.jpg') !important;    
 }
 /*Style for video on masthead*/
 .mastheadvideo {
@@ -80,20 +86,20 @@ h6 {
   z-index: 2;
 }
 
-.mastheadvideo .overlay {
+.mastheadvideo .mhoverlay {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.4;
   z-index: 1;
 }
 
 @media (pointer: coarse) and (hover: none) {
   .mastheadvideo {
-    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+    background: url('../img/pavement.jpg') black no-repeat center center scroll;
   }
   .mastheadvideo video {
     display: none;
@@ -314,6 +320,9 @@ section.udotsd-section .udotsd-item .udotsd-date {
 .orange-list {
   list-style: none;
 }
+.text-orange {
+  color: #E0822D !important;
+}
 
 .orange-list li::before {
   content: "\2022";
@@ -380,6 +389,10 @@ a:hover, a:focus, a:active {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+.active .overlay{
+  width:100%;
+  left: 0;
 }
 .no-border {
   border: none !important;
@@ -615,6 +628,9 @@ text-align: right;
 .fadeIn-bottom{
   top: 80%;
 }
+.pb-icon {
+  font-size: 9rem;
+}
 /*Effect 2 https://miketricking.github.io/bootstrap-image-hover/ */
 .hovereffect {
   width: 100%;
@@ -807,3 +823,49 @@ transition-delay:.2s;
 .font1rem {
   font-size: 1rem;
 }
+/*Flabk Jack Effect*/
+:root {
+  --mainColor: #5588cc;
+  --whiteColor: #fff;
+}
+.flapjack {
+  background:
+     linear-gradient(
+       to bottom, var(--mainColor) 0%,
+       var(--mainColor) 100%
+     );
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+  color: #000;
+  text-decoration: none;
+  transition: background-size .5s;
+}
+
+.flapjack:hover {
+  background-size: 2px 50px;
+}
+.flapjack-white {
+  background:
+     linear-gradient(
+       to bottom, var(--whiteColor) 0%,
+       var(--whiteColor) 100%
+     );
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 2px 0px;
+  color: #000;
+  text-decoration: none;
+  transition: background-size .5s;
+}
+
+.flapjack-white:hover {
+  background-size: 2px 100%;
+}
+/*End flapjack*/
+.card-img-top-small {
+  width: 50%;
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+}
+
