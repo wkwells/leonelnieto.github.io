@@ -34,7 +34,24 @@ h6 {
 .text-transform-none {
   text-transform: none;
 }
-
+#sd-infographic svg {
+  background-image: url('../img/sd-infographic.png') !important;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  max-width: 900px;
+  width: 90%;
+}
+#sd-infographic path {
+  fill: transparent;
+}
+#sd-infographic svg a:focus,svg a:hover {
+  outline: none;
+  cursor: pointer;
+}
+#sd-infographic svg a:focus path, #sd-infographic svg a:hover path {
+  fill: rgba(238,118,35, 0.5);
+  cursor: pointer;
+}
 .masthead {
   height: 100vh;
   min-height: 500px;

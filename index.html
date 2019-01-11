@@ -330,11 +330,114 @@
             </div>
             <div class="col-lg-6">
               <div class="card no-border">
-                <div class="card-body p-0">
-                  <img class="card-img" src="img/sd-infographic.png" usemap="#image-map">
+                <div class="card-body text-center p-0" id="sd-infographic">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 123 69">
+                      <a class="img-map-link" data-toggle="modal" data-target="#region2Details">
+                        <path class="region" id="region-2" d="M38 25v2h-1l-1-1-1 1h-2l-1 1h-1v1h-1v1l-1-1h-1l-1-1-1 1a10 10 0 0 1-1 1h-1l-1 1-1-1-1 1v1l1 1-1 1a2 2 0 0 1 0 1l-1 1h-5-6l-2-1v-5-1-2-1-2h2l1 1h7l2-1 1 1v1l1 1 1-1h1l1 1 1-1 1 1 1-1-1-1 1-1h1v-1h2v2h8z"/>
+                      </a>
+                      <a class="img-map-link" data-toggle="modal" data-target="#region3Details">
+                        <path class="region" id="region-3" d="M6 40h15v2h2l1-1 1-1v-1-1h1l2-1v-1h3v1h8l-1 1v3h7v-1l1-3-1-2v-2l1-2-1-2v-2-2h-7v2h-1-1-1l-1 1h-1-1l-1 1-1 1h-2l-1-1h-1l-1 1h-1l-1 1h-2v4l-1 1H9 7l-1 1v3z"/>
+                      </a>
+                      <a class="img-map-link" data-toggle="modal" data-target="#region4Details">
+                        <path class="region" id="region-4" d="M6 40l1-1 2 1h12v2h3v-1l1-1v-1-1l1-1h2l1-1h2v1h8l-1 1v3h6l1-1 1 1v24H33l-3 1H19a170 170 0 0 1-8-1H6l-1-1 1-2v-3-2-2-2-2-3-4-2-2z"/>
+                      </a>
+                       <a class="img-map-link" data-toggle="modal" data-target="#region1Details">
+                        <path class="region" id="region-1" d="M16 25h-2-5-1-1v-1-2-1-1a11 11 0 0 1 0-2v-2-1l1-1 1 1h21v7l-1 1v1h-2l-1 1v2h-1v-1l-1 1h-1v-1h-1l-1 1h-1v-1-1l-1-1-1 1h-2z"/>
+                      </a>
+                  </svg>
                 </div>
               </div>
             </div>
+            <!--Modals for region details-->
+            <div class="modal fade" id="region2Details" tabindex="-1" role="dialog" aria-labelledby="region2Details" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-center" id="region2Details">Region 2</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <p class="lead">Counties: Box Elder, Cache, Weber, Morgan, Rich</p>
+                      <p class="lead">Contact: <br >
+                        <i class="fas fa-user"></i> Lisa Wilson <br >
+                        <i class="fas fa-envelope"></i> lwilson@utah.gov  <br >
+                        <i class="fas fa-phone-square"></i> 801.620.1640</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="region1Details" tabindex="-1" role="dialog" aria-labelledby="region1Details" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title text-center" id="region1Details">Region 1</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="lead">Counties: Tooele, Salt Lake, Summit</p>
+                        <p class="lead">Contact: <br >
+                          <i class="fas fa-user"></i> Bryan Adams <br >
+                          <i class="fas fa-envelope"></i> bryanadams@utah.gov<br >
+                          <i class="fas fa-phone-square"></i> 801.975.4844</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="region3Details" tabindex="-1" role="dialog" aria-labelledby="region3Details" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title text-center" id="region3Details">Region 3</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <p class="lead">Counties: Juab, Utah, Wasatch, Duchesne, Daggett, Uintah </p>
+                          <p class="lead">Contact: <br >
+                            <i class="fas fa-user"></i> Rob Clayton <br >
+                            <i class="fas fa-envelope"></i> robertclayton@utah.gov  <br >
+                            <i class="fas fa-phone-square"></i> 801.227.8001</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" id="region4Details" tabindex="-1" role="dialog" aria-labelledby="region4Details" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-center" id="region4Details">Region 4</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="lead">Counties: Millard, Sanpete, Carbon, Grand, Emergy, Sevier, Beaver, Piute, Wayne, Iron, Garfield, San Juan, Washington, Kane</p>
+                            <p class="lead">Contact: <br >
+                              <i class="fas fa-user"></i> Rick Torgerson <br >
+                              <i class="fas fa-envelope"></i> rtorgerson@utah.gov  <br >
+                              <i class="fas fa-phone-square"></i> 435.201.1844</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            <!--END Modals for region details-->
           </div>
           <!--About UDOT Part 2 with Stories end as row -->
         </div>
