@@ -99,7 +99,7 @@ h6 {
 
 @media (pointer: coarse) and (hover: none) {
   .mastheadvideo {
-    background: url('../img/pavement.jpg') black no-repeat center center scroll;
+    background: url('https://farm6.staticflickr.com/5796/30580586430_ee19c121d3_h.jpg') black no-repeat center center scroll;
   }
   .mastheadvideo video {
     display: none;
@@ -108,6 +108,10 @@ h6 {
 /*./end mast head video styles*/
 .goal-page-header-title {
   font-size: 4em;
+}
+.display-2-custom {
+  font-size: 5.5rem;
+  line-height: 1.2;
 }
 
 @media (max-width: 1200px) {
@@ -118,6 +122,10 @@ h6 {
 @media (max-width: 800px) {
   .goal-page-header-title {
     font-size: 3em;
+  }
+  .display-2-custom {
+    font-size: 3rem;
+    line-height: normal;
   }
 }
 
@@ -321,7 +329,7 @@ section.udotsd-section .udotsd-item .udotsd-date {
   list-style: none;
 }
 .text-orange {
-  color: #E0822D !important;
+  color: #d58e61 !important;
 }
 
 .orange-list li::before {
@@ -439,6 +447,11 @@ text-align: right;
 }
 .alt-link {
   cursor: pointer;
+}
+.alt-link:hover, .alt-link:focus, .alt-link:active {
+  color: #ee7623;
+  outline: 0;
+  text-decoration: underline;
 }
 .shrink:hover {
         -webkit-transform: scale(0.8);
