@@ -31,6 +31,9 @@ h6 {
   text-transform: uppercase;
   color: #343a40;
 }
+.lead-lg {
+  font-size: 1.3rem;
+}
 .text-transform-none {
   text-transform: none;
 }
@@ -849,8 +852,8 @@ transition-delay:.2s;
 .thumb-img-wrapper .thumb-image:hover img {
   visibility: visible;
   top: 1.5em;
-  left: 3em;
-  z-index: 2000;
+  left: -10.5em;
+  z-index: 2052;
 }
 .font1rem {
   font-size: 1rem;
