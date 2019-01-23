@@ -122,7 +122,7 @@ h6 {
 
 @media (pointer: coarse) and (hover: none) {
   .mastheadvideo {
-    background: url('https://farm6.staticflickr.com/5796/30580586430_ee19c121d3_h.jpg') black no-repeat center center scroll;
+    background: url('../img/Tech Corridor Version 2.png') black no-repeat center center scroll;
   }
   .mastheadvideo video {
     display: none;
