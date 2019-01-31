@@ -157,7 +157,7 @@ function drawGoalCharts() {
 	 };
     var ctx = document.getElementById("preserve-infrastructure-doughut-chart").getContext("2d");
   	var myChart = new Chart(ctx, config);
-    //Fron here on down draw historical charts.
+    //From here on down draw historical charts.
     url = "https://dashboard.udot.utah.gov/resource/b8iq-pg44.json?$select=year,avg(safety),avg(mobility),avg(infrastructure)&$group=year&$order=year";
     fetch(url).then(function(response){
       return response.json();
@@ -365,7 +365,7 @@ function drawPICharts(){
         var targetMet = [parseFloat(j[0]["atms"]),parseFloat(j[0]["bridges"]),parseFloat(j[0]["pavement"]),parseFloat(j[0]["signals"])];
         var targetRem = [100 - parseFloat(j[0]["atms"]),100 - parseFloat(j[0]["bridges"]),100 - parseFloat(j[0]["pavement"]),100 - parseFloat(j[0]["signals"])];
         var kpiChartData = {
-          labels: ["ATMS","Bridges","Pavements","Signals"],
+          labels: ["ATMS: 9%","Bridges: 38%","Pavements: 36%","Signals: 17%"],
           datasets: [
             {label: 'Target Met',
              data:targetMet,
@@ -762,7 +762,7 @@ function drawZFCharts(){
         var targetMet = [parseFloat(j[0]["ed_index"]),parseFloat(j[0]["if_index"]),parseFloat(j[0]["ii_index"]),parseFloat(j[0]["tc_index"]),parseFloat(j[0]["tf_index"]),parseFloat(j[0]["tsi_index"])];
         var targetRem = [100 - parseFloat(j[0]["ed_index"]), 100 - parseFloat(j[0]["if_index"]), 100 - parseFloat(j[0]["ii_index"]),100 - parseFloat(j[0]["tc_index"]),100 - parseFloat(j[0]["tf_index"]),100 - parseFloat(j[0]["tsi_index"])];
         var kpiChartData = {
-          labels: ["UDOT Equip Damage","UDOT Fatalities","UDOT Injuries","Traffic Crashes","Traffic Fatalities","Traffic Injuries"],
+          labels: ["UDOT Equip Dam: 5%","UDOT Fatalities: 28%","UDOT Injuries: 10%","Traffic Crashes: 8%","Traffic Fatalities: 29%","Traffic Injuries: 20%"],
           datasets: [
             {label: 'Target Met',
              data:targetMet,
@@ -1103,7 +1103,7 @@ function drawOMCharts(){
         var targetMet = [parseFloat(j[0]["delay"]),parseFloat(j[0]["reliability"]),parseFloat(j[0]["mode_split"]),parseFloat(j[0]["snow"])];
         var targetRem = [100 - parseFloat(j[0]["delay"]), 100 - parseFloat(j[0]["reliability"]), 100 - parseFloat(j[0]["mode_split"]),100 - parseFloat(j[0]["snow"])];
         var kpiChartData = {
-          labels: ["I-15 Delay","I-15 Reliability","Mode Split","Snow Removal"],
+          labels: ["I-15 Delay: 30%","I-15 Reliability: 35%","Mode Split: 11%","Snow Removal: 24%"],
           datasets: [
             {label: 'Target Met',
              data:targetMet,
