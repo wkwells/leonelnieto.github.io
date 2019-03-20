@@ -873,13 +873,13 @@ function zeroFatalitiesPM(region){
         data = [];
         data = [actual,target];
         Plotly.newPlot('trafficInjuries',data,layout);
-        //Set data for crhases and plot
+        //Set data for crashes and plot
         actual = [];
         actual = {
             x:x,//xbr = Year
             y:cra, //yvar =data
             mode: "lines+markers",
-            name:"Actual Injuries",
+            name:"Actual Crashes",
             type: 'scatter',
             line:{shape:'spline'}
         };
@@ -888,7 +888,7 @@ function zeroFatalitiesPM(region){
             x:x,//xbr = Year
             y:craT, //yvar =data
             mode: "lines+markers",
-            name:"Target Injuries",
+            name:"Target Crashes",
             type: 'scatter',
             line:{shape:'spline'}
         };
@@ -936,6 +936,11 @@ function zeroFatalitiesPM(region){
                 inj = [];
                 injT = [];
                 for(var i = 0;i < j.length; i++){
+                  //Damage and injury rates are not available after the 15th of each month for the past month if both are zero for loop skips. 
+                  //This is temporary measure till more fixed soluing is investigated. 
+                  if(parseFloat(j[i]["damage_rate"]) == 0 && parseFloat(j[i]["injury_rate"])== 0){
+                    continue;
+                  }
                     x.push(j[i]["sorting_order"]);
                     fat.push(parseFloat(j[i]["damage_rate"]));
                     fatT.push(parseFloat(j[i]["damage_target"]));
