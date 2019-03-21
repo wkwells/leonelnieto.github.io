@@ -1553,8 +1553,6 @@ function optimizeMobilityCharts() {
         y.push(parseInt(j[i]["delay_hours"]));
         z.push(parseInt(j[i]["month_target"]));
       }
-      console.log(j);
-      console.log(y);
       var trace1 = {
         x: x,
         y: y,
@@ -1577,7 +1575,7 @@ function optimizeMobilityCharts() {
           type: "category"
         }
       };
-      Plotly.newPlot("i15delaygraph", data, layout);
+      Plotly.newPlot("delaygraph", data, layout);
       //Fetch and draw reliability graph
       fetch(
         "https://dashboard.udot.utah.gov/resource/mfvh-usiw.json?$select=reliability_score,season,target&$where=year%20%3E%202014&$order=sequence"
