@@ -1754,15 +1754,10 @@ function threletterMonth(str) {
     str.substring(0, 3) + " " + str.substring(str.length - 4, str.length);
   return res;
 }
-//Helper functtion dateBreaker (recieved a date string and breaks it into yy-mm m)
+//Helper function dateBreaker (recieved a date string and breaks it into yyyy mmm)
 function dateBreaker(datestring) {
   var d = new Date(datestring);
-  var n = d.getMonth() + 1;
-  if (n < 10) {
-    n = "0" + n;
-  }
   var year = d.getFullYear();
-  year = year.toString().substr(-2);
   var month = d.toLocaleString("en-us", { month: "short" });
-  return year + "-" + n + " " + month;
+  return year + " " + month;
 }
