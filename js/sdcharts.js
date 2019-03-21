@@ -1537,9 +1537,9 @@ function drawOMCharts() {
 }
 //Optimize mobility Peformance Charts
 function optimizeMobilityCharts() {
-  //fetach and draw delay graph
+  //fetch and draw delay graph
   fetch(
-    "https://dashboard.udot.utah.gov/resource/whr3-7dxf.json?$select=i_15_delay,total,date&$where=not(month=%22Year%22)and%20not(sequence=55)&$order=sequence"
+    "https://dashboard.udot.utah.gov/resource/thgc-uvda.json?$select=delay_hours,month_target,date&$where=entity=%22Statewide%22%20and%20year>2015"
   )
     .then(function(response) {
       return response.json();
@@ -1550,9 +1550,11 @@ function optimizeMobilityCharts() {
       var z = new Array();
       for (var i = 0; i < j.length; i++) {
         x.push(dateBreaker(j[i]["date"]));
-        y.push(parseInt(j[i]["i_15_delay"]));
-        z.push(parseInt(j[i]["total"]));
+        y.push(parseInt(j[i]["delay_hours"]));
+        z.push(parseInt(j[i]["month_target"]));
       }
+      console.log(j);
+      console.log(y);
       var trace1 = {
         x: x,
         y: y,
