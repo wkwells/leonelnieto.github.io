@@ -1578,7 +1578,7 @@ function optimizeMobilityCharts() {
       Plotly.newPlot("delaygraph", data, layout);
       //Fetch and draw reliability graph
       fetch(
-        "https://dashboard.udot.utah.gov/resource/mfvh-usiw.json?$select=reliability_score,season,target&$where=year%20%3E%202014&$order=sequence"
+        "https://dashboard.udot.utah.gov/resource/kxg8-qy3e.json?$select=reliability_measure,target,date&$where=entity=%22Statewide%22"
       )
         .then(function(response) {
           return response.json();
@@ -1588,8 +1588,8 @@ function optimizeMobilityCharts() {
           y = [];
           z = [];
           for (var i = 0; i < j.length; i++) {
-            x.push(dateBreaker(j[i]["season"]));
-            y.push(parseInt(j[i]["reliability_score"]));
+            x.push(dateBreaker(j[i]["date"]));
+            y.push(parseInt(j[i]["reliability_measure"]));
             z.push(parseInt(j[i]["target"]));
           }
           trace1 = [];
@@ -1612,7 +1612,7 @@ function optimizeMobilityCharts() {
           };
           data = [];
           data = [trace1, trace2];
-          Plotly.newPlot("i15reliabilitygraph", data, layout);
+          Plotly.newPlot("reliabilitygraph", data, layout);
           //fetch and draw mode slit graph
           fetch("https://dashboard.udot.utah.gov/resource/nc2g-cvvu.json")
             .then(function(response) {
