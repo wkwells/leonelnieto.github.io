@@ -1537,10 +1537,11 @@ function drawOMCharts() {
 }
 //Optimize mobility Peformance Charts
 function optimizeMobilityCharts() {
-  //fetach and draw delay graph
-  fetch(
-    "https://dashboard.udot.utah.gov/resource/whr3-7dxf.json?$select=i_15_delay,total,date&$where=not(month=%22Year%22)and%20not(sequence=55)&$order=sequence"
-  )
+  //fetach and draw delay
+  //var delayUrl = "https://dashboard.udot.utah.gov/resource/whr3-7dxf.json?$select=i_15_delay,total,date&$where=not(month=%22Year%22)and%20not(sequence=55)&$order=sequence";
+  var delayUrl =
+    "https://dashboard.udot.utah.gov/resource/thgc-uvda.json?$select=date,delay_hours,month_target&$where=entity=%27Statewide%27and%20year%20%3E=2016";
+  fetch(delayUrl)
     .then(function(response) {
       return response.json();
     })
@@ -1550,8 +1551,8 @@ function optimizeMobilityCharts() {
       var z = new Array();
       for (var i = 0; i < j.length; i++) {
         x.push(dateBreaker(j[i]["date"]));
-        y.push(parseInt(j[i]["i_15_delay"]));
-        z.push(parseInt(j[i]["total"]));
+        y.push(parseInt(j[i]["delay_hours"]));
+        z.push(parseInt(j[i]["month_target"]));
       }
       var trace1 = {
         x: x,
@@ -1577,9 +1578,10 @@ function optimizeMobilityCharts() {
       };
       Plotly.newPlot("i15delaygraph", data, layout);
       //Fetch and draw reliability graph
-      fetch(
-        "https://dashboard.udot.utah.gov/resource/mfvh-usiw.json?$select=reliability_score,season,target&$where=year%20%3E%202014&$order=sequence"
-      )
+      //var relUrl = "https://dashboard.udot.utah.gov/resource/mfvh-usiw.json?$select=reliability_score,season,target&$where=year%20%3E%202014&$order=sequence";
+      var relUrl =
+        "https://dashboard.udot.utah.gov/resource/kxg8-qy3e.json?$select=date,reliability_measure,target&$where=entity=%27Statewide%27and%20year%3E=2016";
+      fetch(relUrl)
         .then(function(response) {
           return response.json();
         })
@@ -1588,8 +1590,8 @@ function optimizeMobilityCharts() {
           y = [];
           z = [];
           for (var i = 0; i < j.length; i++) {
-            x.push(dateBreaker(j[i]["season"]));
-            y.push(parseInt(j[i]["reliability_score"]));
+            x.push(dateBreaker(j[i]["date"]));
+            y.push(parseInt(j[i]["reliability_measure"]));
             z.push(parseInt(j[i]["target"]));
           }
           trace1 = [];
