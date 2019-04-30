@@ -225,29 +225,25 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div
-                        class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                      >
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                         Budget
                       </div>
-                      <div
-                        class="h5 mb-0 font-weight-bold text-gray-800 text-center"
-                      >
-                        $120,882,699
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 text-center" id="budget" data-inc-value="" data-inc-duration="2000" data-inc-delay="0">
                       </div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h6 mb-0 mr-3 text-gray-800">21%</div>
+                          <div class="h6 mb-0 mr-3 text-gray-800"><span id="budgetPercent"></span>%
+                          </div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
                             <div
                               class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
                               role="progressbar"
-                              style="width: 21%"
-                              aria-valuenow="21"
+                              aria-valuenow="0"
                               aria-valuemin="0"
                               aria-valuemax="100"
+                              id="budgetProgress"
                             ></div>
                           </div>
                         </div>
@@ -428,6 +424,7 @@
     <script src="../js/tactical/template/template-charts.js"></script>
     <script src="../js/tactical/template/template-charts-2.js"></script>
     <script src="../js/tactical/template/template-charts-3.js"></script>
+    <script src="../js/utils.js"></script>
     <script src="../js/tactical/maintenance.js"></script>
   </body>
 </html>
