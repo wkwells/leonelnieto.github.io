@@ -10,23 +10,31 @@ function loadDraw(region) {
     .then(function (data) {
       var data = JSON.parse(csvJSON(data));
       if (region !== "0") {
-        console.log(region);
+        var canvWrapper = document.getElementById("regionBarWrapper");
+        var oldCanv = document.getElementById('regionBar');
+        var newCanv = document.createElement('canvas');
+        newCanv.id = "regionBar";
+        canvWrapper.replaceChild(newCanv,oldCanv);
         data = data.filter(val => { return val.UDOT_REGION === region });
       }
-      console.log(data);
       document.getElementById("budget").innerHTML = 0;
       var budget = 0;
       var expend = 0;
       var currFis = getCurrentFiscalYear();
+      var table = "<table class='table'><tr><th>Region</th><th>Budget</th><th>Expenditures</th><th>Difference</th></tr>"
       for (var x = 0; x < data.length; x++) {
         if (data[x]["FISCAL_YEAR"] === currFis[0]["FiscalYear"]) {
           budget += parseFloat(data[x]["BUDGET"]);
           expend += parseFloat(data[x]["EXPENDITURES"]);
+          table += `<tr><td>${data[x]["UDOT_REGION"]}</td><td>${formatter.format(data[x]["BUDGET"])}</td><td>${formatter.format(data[x]["EXPENDITURES"])}</td>`;
+          table += `<td>${formatter.format(parseFloat(data[x]["BUDGET"]) - parseFloat(data[x]["EXPENDITURES"]))}</td></tr>`;
         } else {
           budget = 0;
           expend = 0;
         }
       }
+      table += "<table>"
+      document.getElementById('regionTable').innerHTML = table;
       var expendProj = Math.round(((expend / (365 - currFis[0]["DaysLeft"])) * currFis[0]["DaysLeft"]) + expend);
       var budgetPercent = parseInt(parseFloat(expend / budget) * 100);
       animateValue("budgetPercent", 0, budgetPercent, 3000);
@@ -64,26 +72,26 @@ function loadDraw(region) {
       var fisYears = [];
       var budgetArr = [];
       var expendArr = [];
+      var budgetSum = 0;
+      var expendSum = 0;
       for (var x = 0; x < data.length; x++) {
         if (region !== "0") {
           fisYears.push(data[x]["FISCAL_YEAR"]);
-          budgetArr.push(data[x]["BUDGET"]);
-          expendArr.push(data[x]["EXPENDITURES"]);
+          budgetArr.push(parseFloat(data[x]["BUDGET"]));
+          expendArr.push(parseFloat(data[x]["EXPENDITURES"]));
         } else {
-          var sumBudget = 0;
-          var sumExpend = 0;
-          sumBudget += data[x]["BUDGET"];
-          sumExpend += data[x]["EXPENDITURES"];
-          if ((x % 4) === 0) {
+          budgetSum += parseFloat(data[x]["BUDGET"]);
+          expendSum += parseFloat(data[x]["EXPENDITURES"]);
+          if (data[x]["UDOT_REGION"] == "4") {
             fisYears.push(data[x]["FISCAL_YEAR"]);
-            budgetArr.push(sumBudget);
-            expendArr.push(sumExpend);
+            budgetArr.push(budgetSum);
+            budgetSum = 0;
+            expendArr.push(expendSum);
+            expendSum = 0;
           }
+
         }
       }
-      console.log(fisYears);
-      console.log(budgetArr);
-      console.log(expendArr);
       var budgetData = {
         label: "Budget",
         data: budgetArr,
@@ -105,22 +113,9 @@ function loadDraw(region) {
       }
 
       var ctx = document.getElementById("regionBar");
-      var myBarChart = new Chart(ctx, {
+      var maintenanceBarChart = new Chart(ctx, {
         type: 'bar',
         data: barData,
-        options: {
-          scales: {
-            xAxes: [{
-              barPercentage: 1,
-              categoryPercentage: 0.6
-            }],
-            yAxes: [{
-              id: "y-axis-density"
-            }, {
-              id: "y-axis-gravity"
-            }]
-          }
-        }
       });
     })
     .catch(function (err) {

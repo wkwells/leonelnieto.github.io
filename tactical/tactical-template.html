@@ -167,7 +167,7 @@
         </div>
         <div class="row my-4">
           <div class="col-md-8 text-center mx-auto">
-            <button type="button" class="btn btn-secondary btn-sm" id="btnS" onclick="loadDraw('0')">
+            <button type="button" class="btn btn-secondary btn-sm" id="btnS" onclick="loadDraw('0');">
               Statewide
             </button>
             <button type="button" class="btn btn-secondary btn-sm" id="btnR1" onclick="loadDraw('1')">
@@ -259,13 +259,13 @@
         <div class="row">
           <div class="col-md-6">
             <!-- Area Chart -->
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-4 h-100">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Budget Expenditures Table</h6>
               </div>
               <div class="card-body">
                 <div class="chart-area">
-                  <canvas id="myAreaChart"></canvas>
+                  <div id="regionTable"></div>
                 </div>
                 <hr />
               </div>
@@ -273,12 +273,12 @@
           </div>
           <div class="col-md-6">
             <!-- Area Chart -->
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-4 h-100">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Historical Budget and Expenditures</h6>
               </div>
               <div class="card-body">
-                <div class="chart-area">
+                <div class="chart-area" id="regionBarWrapper">
                   <canvas id="regionBar"></canvas>
                 </div>
                 <hr />
@@ -286,7 +286,7 @@
             </div>
           </div>
         </div>
-        <div class="row mb-4">
+        <div class="row m-4">
           <div class="col-12">
             <h6 class="text-white font-weight-bold">
               Snow Removal Performance
@@ -348,7 +348,6 @@
         </div>
       </div>
       <hr class="m-5 no-border" />
-      <a class="scrollArrow js-scroll-trigger" href="#strategicGoals"><span></span>Scroll</a>
       <!--/.Section Wrapper -->
     </section>
     <!--./Division Accomplishments Section End end -->
@@ -366,7 +365,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="../js/udotsd.min.js"></script>
-  <script src="../js/tactical/template/template-charts.js"></script>
   <script src="../js/tactical/template/template-charts-2.js"></script>
   <script src="../js/tactical/template/template-charts-3.js"></script>
   <script src="../js/utils.js"></script>
