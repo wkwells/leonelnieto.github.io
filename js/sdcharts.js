@@ -1576,7 +1576,7 @@ function optimizeMobilityCharts() {
           type: "category"
         }
       };
-      Plotly.newPlot("i15delaygraph", data, layout);
+      Plotly.newPlot("delaygraph", data, layout);
       //Fetch and draw reliability graph
       //var relUrl = "https://dashboard.udot.utah.gov/resource/mfvh-usiw.json?$select=reliability_score,season,target&$where=year%20%3E%202014&$order=sequence";
       var relUrl =
@@ -1614,7 +1614,7 @@ function optimizeMobilityCharts() {
           };
           data = [];
           data = [trace1, trace2];
-          Plotly.newPlot("i15reliabilitygraph", data, layout);
+          Plotly.newPlot("reliabilitygraph", data, layout);
           //fetch and draw mode slit graph
           fetch("https://dashboard.udot.utah.gov/resource/nc2g-cvvu.json")
             .then(function(response) {

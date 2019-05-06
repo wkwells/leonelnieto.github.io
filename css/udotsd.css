@@ -73,10 +73,10 @@ h6 {
   z-index: 100;
 }
 .zf-bg-img {
-  background-image: url('../img/zero-fatalities-masthead.jpg') !important;    
+  background-image: url('../img/zero-fatalities-masthead.jpg') !important;
 }
 .om-bg-img {
-  background-image: url('../img/optimize-mobility-background.jpg') !important;    
+  background-image: url('../img/optimize-mobility-background.jpg') !important;
 }
 .pb-bg-img {
   background-image: url('../img/Tech Corridor.png') !important;
@@ -903,4 +903,3 @@ transition-delay:.2s;
   border-top-left-radius: calc(.25rem - 1px);
   border-top-right-radius: calc(.25rem - 1px);
 }
-
