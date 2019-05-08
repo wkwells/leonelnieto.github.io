@@ -18,6 +18,7 @@ function loadDraw(region) {
         data = data.filter(val => { return val.UDOT_REGION === region });
       }
       document.getElementById("budget").innerHTML = 0;
+      console.log(data);
       var budget = 0;
       var expend = 0;
       var currFis = getCurrentFiscalYear();
