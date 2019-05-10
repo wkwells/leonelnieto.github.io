@@ -1613,6 +1613,11 @@ function optimizeMobilityCharts() {
             name: "Target"
           };
           data = [];
+          layout = {
+              yaxis: {
+                  range: [50, 100]
+              }
+          }
           data = [trace1, trace2];
           Plotly.newPlot("reliabilitygraph", data, layout);
           //fetch and draw mode slit graph
