@@ -507,22 +507,13 @@
               >
                 <div class="card-body">
                   <h4 class="card-title text-center">Delay</h4>
-                  <p>
-                    Delay is defined as the additional travel time experienced
-                    by a driver, passenger or pedestrian, due to circumstances
-                    that impede the desirable movement of traffic such as
-                    bottlenecks, car accidents or weather conditions. It is
-                    measured as the time difference between congested travel
-                    time, the travel time at 50 mph, which is the optimal speed
-                    to maximize traffic flow.
+                  <p>Delay is measured as the difference between and free-flow travel time and the actual travel time. UDOT defines free-flow travel time on an arterial as the 30th percentile travel time from 7 am to 10 pm, Monday through Friday. The free-flow travel time for freeways is the time it takes to travel at 50 mph.
                   </p>
                   <ul style="list-style:square inside">
-                    <li>
-                      Monthly delay: Delay is calculated for all vehicles in
-                      both directions of major roads in the state for all hours
-                      everyday.
-                    </li>
+                    <li>Monthly delay: Delay is calculated for all vehicles in both directions of major roads in the state for all hours every day.</li>
                   </ul>
+                  <h6 class="card-title text-center">Target Delay</h6>
+                  <p>The target delay established for January 2016 is equal to the average delay (vehicle hours of delay) experienced on a monthly basis between January 2016 and December 2016. This target delay was grown linearly by 4% to reflect historic traffic growth.</p>
                   <div id="delaygraph" style="height: 400px;"></div>
                 </div>
               </div>
@@ -535,29 +526,16 @@
               >
                 <div class="card-body">
                   <h4 class="card-title text-center">Reliability</h4>
-                  <p>
-                    The reliability graph below is determined by comparing the
-                    average speed of vehicles (50 mph) and extra time required
-                    for travelers to ensure on-time arrival 95% of the time,
-                    also known as Buffer Time Index (BTI).
-                  </p>
+                  <p>Reliability is both the measure of how consistent and how fast traffic conditions are on each roadway. There are four categories of reliability: Reliably Fast, Reliably Slow, Unreliably Fast and Unreliably Slow.</p>
                   <ul style="list-style:square inside">
-                    <li>
-                      Reliability score: The Reliability Score is determined by
-                      the percentage of reliably fast 1-mile segments. Reliably
-                      slow and unreliable segments get a score of 0. The freeway
-                      segment values are weighted by their Vehicle Miles
-                      Traveled (VMT).
-                    </li>
-                    <li>
-                      Normalized reliability score: The normalized reliability
-                      score is determined by dividing the reliability score by
-                      the target of 85%. This results in a maximum normalized
-                      reliability score is 100 which can then be used to support
-                      the overall composite metric. Composite metric of 100 can
-                      be used to support the overall composite metric. See graph
-                      in dashboard below.
-                    </li>
+                    <li>How Fast? UDOT measures reliability on all of Utah’s state roads, each of which have different speed limits. The
+                      Travel Time Index (TTI) is used rather than the speed limit to determine if traffic is fast or slow because
+                      the threshold needs to be dynamic. The TTI is the ratio of the rush hour travel time to the free-flow
+                      travel time. UDOT defines free-flow travel time on an arterial as the 30 th percentile travel time from 7
+                      am to 10 pm, Monday through Friday.</li>
+                    <li>How Consistent? The Buffer Time Index is used to determine how consistent traffic is, which we call Reliable or
+                      Unreliable. The buffer time index describes the amount of extra buffer time travelers would need to be
+                      on time 95 percent of the time.</li>
                   </ul>
                   <div id="reliabilitygraph" style="height: 400px;"></div>
                 </div>
