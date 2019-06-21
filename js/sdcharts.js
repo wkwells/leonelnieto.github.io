@@ -80,44 +80,7 @@ function drawGoalCharts() {
       return response.json();
     })
     .then(function(data) {
-      var dataIndex = data[0].safety;
-      var indexLabel = ["", "Safety Index"];
-      var config = {
-        type: "doughnut",
-        data: {
-          labels: indexLabel,
-          datasets: [
-            {
-              data: [Math.round((100 - dataIndex) * 10) / 10, dataIndex],
-              backgroundColor: ["#d58e61", "#5a87c5"]
-            }
-          ]
-        },
-        options: {
-          defaultFontFamily: (Chart.defaults.global.defaultFontFamily =
-            "proxima-nova, sans-serif"),
-          legend: { display: false },
-          responsive: true,
-          animation: {
-            duration: 3000,
-            animateScale: true,
-            animateRotate: true,
-            easing: "easeOutCirc"
-          },
-          elements: {
-            center: {
-              text: dataIndex + "%",
-              color: "#000000", // Default is #000000
-              fontStyle: "proxima-nova, sans-serif", // Default is Arial
-              sidePadding: 20 // Defualt is 20 (as a percentage)
-            }
-          }
-        }
-      };
-      var ctx = document
-        .getElementById("zero-fatalities-doughut-chart")
-        .getContext("2d");
-      var myChart = new Chart(ctx, config);
+      //Safety Index was moved to sd-index.js
       dataIndex = data[0].mobility;
       indexLabel = ["", "Mobility Index"];
       config = {

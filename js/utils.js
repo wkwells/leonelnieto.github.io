@@ -141,3 +141,26 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
+
+function maxDate(dates){
+  var max_dt = dates[0],
+   max_dtObj = new Date(dates[0]);
+  dates.forEach(function(dt,index){
+    if( new Date(dt) > max_dtObj) {
+      max_dt = dt;
+      max_dtObj = new Date(dt);
+    }
+  });
+  return max_dt;
+}
+function maxDateInData(data,dateField){
+  let max_date = data[0][dateField];
+  let max_date_object = new Date(data[0][dateField]);
+  data.forEach(function(dt,index){
+    if(new Date(dt[dateField])> max_date_object) {
+      max_date = dt[dateField];
+      max_date_object = new Date(dt[dateField]);
+    }
+  });
+  return max_date;
+}
