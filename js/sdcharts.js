@@ -80,44 +80,7 @@ function drawGoalCharts() {
       return response.json();
     })
     .then(function(data) {
-      var dataIndex = data[0].safety;
-      var indexLabel = ["", "Safety Index"];
-      var config = {
-        type: "doughnut",
-        data: {
-          labels: indexLabel,
-          datasets: [
-            {
-              data: [Math.round((100 - dataIndex) * 10) / 10, dataIndex],
-              backgroundColor: ["#d58e61", "#5a87c5"]
-            }
-          ]
-        },
-        options: {
-          defaultFontFamily: (Chart.defaults.global.defaultFontFamily =
-            "proxima-nova, sans-serif"),
-          legend: { display: false },
-          responsive: true,
-          animation: {
-            duration: 3000,
-            animateScale: true,
-            animateRotate: true,
-            easing: "easeOutCirc"
-          },
-          elements: {
-            center: {
-              text: dataIndex + "%",
-              color: "#000000", // Default is #000000
-              fontStyle: "proxima-nova, sans-serif", // Default is Arial
-              sidePadding: 20 // Defualt is 20 (as a percentage)
-            }
-          }
-        }
-      };
-      var ctx = document
-        .getElementById("zero-fatalities-doughut-chart")
-        .getContext("2d");
-      var myChart = new Chart(ctx, config);
+      //Safety Index was moved to sd-index.js
       dataIndex = data[0].mobility;
       indexLabel = ["", "Mobility Index"];
       config = {
@@ -195,41 +158,26 @@ function drawGoalCharts() {
         .getContext("2d");
       var myChart = new Chart(ctx, config);
       //From here on down draw historical charts.
+      var year = (new Date().getFullYear()) - 5;
       url =
-        "https://dashboard.udot.utah.gov/resource/b8iq-pg44.json?$select=year,avg(safety),avg(mobility),avg(infrastructure)&$group=year&$order=year";
+        "https://dashboard.udot.utah.gov/resource/b8iq-pg44.json?$select=year,avg(safety),avg(mobility),avg(infrastructure)&$group=year&$order=year&$having=year>="+year;
       fetch(url)
         .then(function(response) {
           return response.json();
         })
         .then(function(j) {
-          var zfData = [];
+          //zfData Chart Rendering Moved to sd-chart.js
           var omData = [];
           var piData = [];
           var years = [];
           for (var i = 0; i < j.length; i++) {
-            zfData.push(parseInt(j[i]["avg_safety"]));
             omData.push(parseInt(j[i]["avg_mobility"]));
             piData.push(parseInt(j[i]["avg_infrastructure"]));
             years.push(j[i]["year"]);
           }
-          // var zfLineChart = document.getElementById("zero-fatalities-line-chart");
-          // var omLineChart = document.getElementById("optimize-mobility-line-chart");
-          // var piLineChart = document.getElementById("preserve-infrastructure-line-chart");
           Chart.defaults.global.defaultFontFamily = "proxima-nova, sans-serif";
           Chart.defaults.global.defaultFontSize = 14;
           Chart.defaults.global.defaultFontColor = "#000";
-          var linechartData = {
-            labels: years,
-            datasets: [
-              {
-                label: "Safety Index",
-                data: zfData,
-                borderColor: "#5a87c5",
-                fill: false,
-                backgroundColor: "#000"
-              }
-            ]
-          };
           var chartOptions = {
             responsive: true,
             animation: {
@@ -271,14 +219,7 @@ function drawGoalCharts() {
               enabled: false
             }
           };
-          var ctx = document.getElementById("zero-fatalities-line-chart");
-          new Chart(ctx, {
-            type: "line",
-            data: linechartData,
-            options: chartOptions
-          });
-          //redefine data
-          linechartData = {
+          var linechartData = {
             labels: years,
             datasets: [
               {
@@ -1613,6 +1554,11 @@ function optimizeMobilityCharts() {
             name: "Target"
           };
           data = [];
+          layout = {
+              yaxis: {
+                  range: [50, 100]
+              }
+          }
           data = [trace1, trace2];
           Plotly.newPlot("reliabilitygraph", data, layout);
           //fetch and draw mode slit graph

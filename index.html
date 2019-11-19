@@ -20,7 +20,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-16502188-1');
     </script>
   </head>
@@ -110,7 +109,7 @@
               </div>
             </div>
           </div>
-          <a class="scrollArrow js-scroll-trigger" href="#aboutUDOT"><span></span>Scroll</a>
+          <a class="scrollArrow js-scroll-trigger" href="#aboutUDOT"><span></span></a>
         </header>
       <hr class="m-0">
       <!--About UDOT Section -->
@@ -466,7 +465,7 @@
           <!--About UDOT Part 2 with Stories end as row -->
         </div>
         <hr class="m-5 no-border">
-        <a class="scrollArrow js-scroll-trigger" href="#strategicGoals"><span></span>Scroll</a>
+        <a class="scrollArrow js-scroll-trigger" href="#strategicGoals"><span></span></a>
         <!--/.Section Wrapper -->
       </section>
       <!--./About UDOT Section end -->
@@ -515,7 +514,7 @@
           </div>
           <!--./Frist Row Under Strategic Direction Ends -->
         </div>
-        <a class="scrollArrow js-scroll-trigger" href="#funding"><span></span>Scroll</a>
+        <a class="scrollArrow js-scroll-trigger" href="#funding"><span></span></a>
         <!--./Section Wrapper -->
       </section>
       <!--./Section on Strategic Goaals ends -->
@@ -866,7 +865,7 @@
           </div>
           <!--./Row Containing tabs for funding end -->
         </div>
-        <a class="scrollArrow js-scroll-trigger" href="#programBriefing"><span></span>Scroll</a>
+        <a class="scrollArrow js-scroll-trigger" href="#programBriefing"><span></span></a>
         <!--./Section Wrapper -->
       </section>
       <!--./Section on Funding ends -->
@@ -925,7 +924,7 @@
           </div>
           <!--./Row in Program Briefing -->
         </div>
-        <a class="scrollArrow js-scroll-trigger" href="#tacticalMeasuresSuplement"><span></span>Scroll</a>
+        <a class="scrollArrow js-scroll-trigger" href="#tacticalMeasuresSuplement"><span></span></a>
         <!--./Wrapper Div for Program Breifing -->
       </section>
       <!--./Section on Program Briefing -->
@@ -989,7 +988,7 @@
               <div class="card-deck container-fluid">
               <div class="card">
                   <div class="card-body">
-                        <a href="https://dashboard.udot.utah.gov/stories/s/Structures-Tactical-Measures/862n-e4em"> <!--Link here-->
+                        <a href="tactical/structures-tactical-measures.html"> <!--Link here-->
                               <i class="fas fa-archway fa-2x"></i>
                               <h6 class="card-title">Structures</h6>
                         </a>
@@ -1005,7 +1004,7 @@
               </div>
               <div class="card">
                   <div class="card-body">
-                        <a href="https://dashboard.udot.utah.gov/stories/s/fm8h-drr8/"> <!--Link here-->
+                        <a href="tactical/employee-development-tactical-measures.html"> <!--Link here-->
                               <i class="fas fa-graduation-cap fa-2x"></i>
                               <h6 class="card-title">Employee Development</h6>
                         </a>
@@ -1034,7 +1033,7 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <a href="https://dashboard.udot.utah.gov/stories/s/Traffic-Safety-Tactical-Measures/y7xb-kh2v"> <!--Link here-->
+                                <a href="tactical/traffic-and-safety-tactical-measures.html"> <!--Link here-->
                                     <i class="fas fa-car fa-2x"></i>
                                     <h6 class="card-title">Traffic and Safety</h6>
                                 </a>
@@ -1081,7 +1080,7 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                  <a href="https://dashboard.udot.utah.gov/stories/s/3mn9-gaxm"> <!--Link here-->
+                                  <a href="tactical/permits-tactical-measures.html"> <!--Link here-->
                                         <i class="fas fa-stamp fa-2x"></i>
                                         <h6 class="card-title">Statewide Permitting</h6>
                                   </a>
@@ -1115,8 +1114,11 @@
     <!-- Custom scripts for this template -->
     <script src="js/udotsd.min.js"></script>
     <script src="js/sdcharts.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/sd-index.js"></script>
     <script>
       drawGoalCharts();
+      safetyIndexCharts();
       var waypoint = new Waypoint({
           element: document.getElementById('strategicGoals'),
           handler: function(direction) {
